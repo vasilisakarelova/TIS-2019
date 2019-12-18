@@ -1,0 +1,6 @@
+development:
+  password: ba46bf18643b717c5906434db95d4a65
+  theme_id: "32483278899"
+  store: the-internetshop.myshopify.com
+  ignore_files:
+    - settings_data.json
