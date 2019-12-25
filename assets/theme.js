@@ -235,11 +235,11 @@ timber.accessibleNav = function () {
 
 timber.drawersInit = function () {
   timber.LeftDrawer = new timber.Drawers('NavDrawer', 'left');
-  
+
     timber.RightDrawer = new timber.Drawers('CartDrawer', 'right', {
       'onDrawerOpen': ajaxCart.load
     });
-  
+
 };
 
 timber.mobileNavToggle = function () {
@@ -697,7 +697,7 @@ var slickTheme = (function(module, $) {
       } else {
         var now = moment().startOf('day').hour(simulateHour);
       }
-    
+
       var debugFormat = 'D.M.Y k:mm'; // pritty date print for debuging
       var slides = [];
       var debugSlides = true;
@@ -705,20 +705,20 @@ var slickTheme = (function(module, $) {
 
       var slickIndex = 0;
 
-      
-        
-        
-        
 
-        
+
+
+
+
+
           var start = 6;
           var end = 10;
 
           if(start > end) {
-            var momentStart = moment().startOf('day').hour(start); // slide starts today 
+            var momentStart = moment().startOf('day').hour(start); // slide starts today
             var momentEnd = moment().startOf('day').add(1, 'day').hour(end); // slide ends next day
           } else {
-            var momentStart = moment().startOf('day').hour(start); // slide starts today 
+            var momentStart = moment().startOf('day').hour(start); // slide starts today
             var momentEnd = moment().startOf('day').hour(end); // slide ends today
           }
 
@@ -733,22 +733,22 @@ var slickTheme = (function(module, $) {
           });
 
           if(debugSlides) console.log('slide 1 starts from '+ momentStart.format(debugFormat) + ' to ' + momentEnd.format(debugFormat));
-        
 
-      
-        
-        
-        
 
-        
+
+
+
+
+
+
           var start = 10;
           var end = 18;
 
           if(start > end) {
-            var momentStart = moment().startOf('day').hour(start); // slide starts today 
+            var momentStart = moment().startOf('day').hour(start); // slide starts today
             var momentEnd = moment().startOf('day').add(1, 'day').hour(end); // slide ends next day
           } else {
-            var momentStart = moment().startOf('day').hour(start); // slide starts today 
+            var momentStart = moment().startOf('day').hour(start); // slide starts today
             var momentEnd = moment().startOf('day').hour(end); // slide ends today
           }
 
@@ -763,22 +763,22 @@ var slickTheme = (function(module, $) {
           });
 
           if(debugSlides) console.log('slide 2 starts from '+ momentStart.format(debugFormat) + ' to ' + momentEnd.format(debugFormat));
-        
 
-      
-        
-        
-        
 
-        
+
+
+
+
+
+
           var start = 18;
           var end = 20;
 
           if(start > end) {
-            var momentStart = moment().startOf('day').hour(start); // slide starts today 
+            var momentStart = moment().startOf('day').hour(start); // slide starts today
             var momentEnd = moment().startOf('day').add(1, 'day').hour(end); // slide ends next day
           } else {
-            var momentStart = moment().startOf('day').hour(start); // slide starts today 
+            var momentStart = moment().startOf('day').hour(start); // slide starts today
             var momentEnd = moment().startOf('day').hour(end); // slide ends today
           }
 
@@ -793,22 +793,22 @@ var slickTheme = (function(module, $) {
           });
 
           if(debugSlides) console.log('slide 3 starts from '+ momentStart.format(debugFormat) + ' to ' + momentEnd.format(debugFormat));
-        
 
-      
-        
-        
-        
 
-        
+
+
+
+
+
+
           var start = 20;
           var end = 18;
 
           if(start > end) {
-            var momentStart = moment().startOf('day').hour(start); // slide starts today 
+            var momentStart = moment().startOf('day').hour(start); // slide starts today
             var momentEnd = moment().startOf('day').add(1, 'day').hour(end); // slide ends next day
           } else {
-            var momentStart = moment().startOf('day').hour(start); // slide starts today 
+            var momentStart = moment().startOf('day').hour(start); // slide starts today
             var momentEnd = moment().startOf('day').hour(end); // slide ends today
           }
 
@@ -823,22 +823,22 @@ var slickTheme = (function(module, $) {
           });
 
           if(debugSlides) console.log('slide 4 starts from '+ momentStart.format(debugFormat) + ' to ' + momentEnd.format(debugFormat));
-        
 
-      
-        
-        
-        
 
-        
+
+
+
+
+
+
           var start = 0;
           var end = 6;
 
           if(start > end) {
-            var momentStart = moment().startOf('day').hour(start); // slide starts today 
+            var momentStart = moment().startOf('day').hour(start); // slide starts today
             var momentEnd = moment().startOf('day').add(1, 'day').hour(end); // slide ends next day
           } else {
-            var momentStart = moment().startOf('day').hour(start); // slide starts today 
+            var momentStart = moment().startOf('day').hour(start); // slide starts today
             var momentEnd = moment().startOf('day').hour(end); // slide ends today
           }
 
@@ -853,21 +853,21 @@ var slickTheme = (function(module, $) {
           });
 
           if(debugSlides) console.log('slide 5 starts from '+ momentStart.format(debugFormat) + ' to ' + momentEnd.format(debugFormat));
-        
 
-      
-        
-        
-        
 
-        
+
+
+
+
+
+
           slides.push({
             liquidIndex: 6,
             enabled: false
           });
-        
 
-      
+
+
 
       if(debugSlides) console.log('slide times', slides);
 
@@ -1200,7 +1200,7 @@ theme.initCache = function () {
     $logo                   : $('.site-header__logo img'),
     $toggleSearchModal      : $('.js-toggle-search-modal'),
 
-    $productImages          : $('.product-single__photos'),
+    $productImages          : $('.product-page--photos'),
     $productImagePhoto      : $('.product-single__photo'),
 
     $indentedRteImages      : $('.rte--indented-images'),
@@ -1212,7 +1212,7 @@ theme.initCache = function () {
     // Equal height elements
     $productGridImages      : $('.grid-uniform .grid-product__image-wrapper'),
 
-    $productSingleWrapper   : $('.product-single'),
+    $productSingleWrapper   : $('.product-page'),
     $productSingleMeta      : $('.product-single__meta'),
     $productReturnLink      : $('.return-link'),
     $productSelectors       : $('.radio-wrapper')
@@ -1227,15 +1227,15 @@ theme.init = function () {
   theme.afterCartLoad();
   theme.checkoutIndicator();
   theme.collectionParallax();
-  
+
     theme.equalHeights();
-  
+
   theme.collectionBackButton();
   theme.hideSingleSelectors();
   theme.styleTextLinks();
   theme.searchModal();
 
-  
+
 
   // Functions to run on load so image sizes can be calculated
   theme.cache.$window.on('load', theme.resizeLogo);
@@ -1277,17 +1277,17 @@ theme.setBreakpoints = function () {
     enquire.register(theme.variables.mediaQuerySmall, {
       match: function () {
         theme.createImageCarousel();
-        
+
         theme.variables.bpSmall = true;
 
-        
+
       },
       unmatch: function () {
         theme.destroyImageCarousel();
         theme.variables.bpSmall = false;
         theme.initStickyProductMeta();
 
-        
+
       }
     });
   }
@@ -1334,21 +1334,21 @@ theme.initHero = function () {
   });
 };
 
-theme.resizeLogo = function () {
-  // Using .each() as there can be a reversed logo too
-  theme.cache.$logo.each(function() {
-    var $el = $(this),
-        logoWidthOnScreen = $el.width(),
-        containerWidth = $el.closest('.grid__item').width();
-    // If image exceeds container, let's make it smaller
-    if (logoWidthOnScreen > containerWidth) {
-      $el.css('maxWidth', containerWidth);
-    }
-    else {
-      $el.removeAttr('style');
-    }
-  });
-};
+// theme.resizeLogo = function () {
+//   // Using .each() as there can be a reversed logo too
+//   theme.cache.$logo.each(function() {
+//     var $el = $(this),
+//         logoWidthOnScreen = $el.width(),
+//         containerWidth = $el.closest('.grid__item').width();
+//     // If image exceeds container, let's make it smaller
+//     if (logoWidthOnScreen > containerWidth) {
+//       $el.css('maxWidth', containerWidth);
+//     }
+//     else {
+//       $el.removeAttr('style');
+//     }
+//   });
+// };
 
 theme.sizeCartDrawerFooter = function () {
   // Stop if our drawer doesn't have a fixed footer
@@ -1455,9 +1455,21 @@ theme.createImageCarousel = function () {
   }
 
   theme.cache.$productImages.slick({
-    arrows         : false,
-    dots           : true,
-    adaptiveHeight : true
+    arrows: false,
+    dots: true,
+    adaptiveHeight: true,
+    draggable: false,
+    customPaging: function(slider, i) {
+      return '<a class="product-page--photos" href="#"></a>'
+    }
+  });
+
+  theme.cache.$productImages.find(".slick-slide").on("click", function(ev){
+    if (ev.offsetX >= (ev.target.offsetWidth / 2)) {
+      theme.cache.$productImages.slickNext();
+    } else if (ev.offsetX < (ev.target.offsetWidth / 2)) {
+      theme.cache.$productImages.slickPrev();
+    }
   });
 };
 

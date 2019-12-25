@@ -396,17 +396,15 @@ body {
 }
 
 .wrapper {
-  max-width: $siteWidth;
   margin: 0 auto;
-  padding: 0 ($gutter / 2);
+  padding: 0 5px;
 
-  @include at-query ($min, $postSmall) {
-    padding: 0 $gutter;
+  @include at-query ($min, $large) {
+    padding: 0 10px;
   }
 }
 
-.main-content {
-  display: block;
+.main-content.is-index {
   padding-top: $contentTopMarginSmall;
 
   @include at-query($min, $postSmall) {
@@ -1624,7 +1622,7 @@ $socialIconFontStack: 'icons';
   -webkit-overflow-scrolling: touch;
   top: 0;
   bottom: 0;
-  padding: 0 ($gutter / 2) ($gutter / 2);
+  padding: 0 5px;
   z-index: $zindexDrawer;
   color: $colorDrawerText;
   background-color: $colorDrawers;
@@ -2199,10 +2197,16 @@ $socialIconFontStack: 'icons';
 
 /*================ Module | Site Header ================*/
 .site-header {
-  padding: ($gutter / 2) 0 0;
+  padding: 0;
+
+  .grid--flex {
+    height: 130px;
+  }
+
   a {
   font-weight: 600;
   }
+
   .grid--table {
     display: table;
     table-layout: fixed;

@@ -28,7 +28,7 @@
   {% assign sold_out = false %}
 {% endif %}
 
-<div class="grid__item grid-product {{ grid_item_width }}{% if sold_out %} is-sold-out{% endif %}">
+<div class="grid__item-new grid-product{% if sold_out %} is-sold-out{% endif %}">
   <div class="grid-product__wrapper">
     <div class="grid-product__image-wrapper">
       <a class="grid-product__image-link" href="{{ product.url | within: collection }}">
@@ -36,20 +36,20 @@
       </a>
     </div>
 
-    <a href="{{ product.url | within: collection }}" class="grid-product__meta">
+    <a href="{{ product.url | within: collection }}" class="grid-product-new__meta">
       {% if settings.product_vendor_enable %}
-        <p class="grid-product__vendor">{{ product.vendor }}</p>
+        <p class="grid-product-new__vendor">{{ product.vendor }}</p>
       {% endif %}
-      <span class="grid-product__title">{{ product.title }}</span>
-      <span class="grid-product__price-wrap"><br>
+      <span class="grid-product-new__title">{{ product.title }}</span>
+      <span class="grid-product-new__price-wrap"><br>
         <!--<span class="long-dash">—</span>-->
-        <span class="grid-product__price">
+        <span class="grid-product-new__price">
           {% if on_sale %}
             <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
           {% else %}
              <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
           {% endif %}
-          
+
           {% if sold_out %}
           	<p>{{ 'products.product.sold_out_html' | t }}</p>
           {% else %}
@@ -62,12 +62,12 @@
           {% else %}
             {{ product.price | money_without_trailing_zeros }}
           {% endif %}
-          
+
       		{% endif %}
 
         </span>
       </span>
-      
+
     </a>
   </div>
 </div>

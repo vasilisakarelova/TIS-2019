@@ -1,0 +1,14 @@
+{% raw %}
+  <script id="option-selector-template" type="text/x-handlebars-template">
+    <div id="selector-{{product_id}}-{{option_id}}" data-selectbox-name="{{option_name}}" class="product-page--variants-list">
+      <div class="label product-page--variants-list-title" id="{{option_name}}">{{option_name}}</div>
+      <div class="options product-page--variants-list-content">
+        {{#each option_values}}
+          <span data-value="{{@key}}" class="option" onclick="doSelect('{{@key}}','{{this}}')">
+            {{@key}}
+          </span>
+        {{/each}}
+      </div>
+    </div>
+  </script>
+{% endraw %}

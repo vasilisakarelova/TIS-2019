@@ -6,7 +6,7 @@
   and number of rows.
 {% endcomment %}
 
-{% assign number_of_related_products_per_row = 4 %}
+{% assign number_of_related_products_per_row = 5 %}
 {% assign number_of_rows = 1 %}
 
 {% comment %}
@@ -14,7 +14,7 @@
   Leave blank if you don't need one.
 {% endcomment %}
 
-{% assign heading = 'You might also relate' %}
+{% assign heading = 'Others have viewed' %}
 
 {% comment %}
   Set either or both to true, if you want
@@ -87,7 +87,7 @@
       {% unless product.handle == current_product.handle %}
          {% unless same_vendor and current_product.vendor != product.vendor %}
            {% unless same_type and current_product.type != product.type %}
-             {% include 'product-grid-item' %}
+             {% include 'product-grid-collage' %}
              {% assign counter = counter | plus: 1 %}
              {% if counter == break_at %}
                {% break %}
@@ -102,19 +102,17 @@
 
   {% unless related_items == blank %}
 
-  <aside class="grid">
-    <div class="grid__item">
-      {% unless heading == blank %}
-      <header class="section-header">
-        <h2 class="section-header__title">{{ heading }}</h1>
-      </header>
-      {% endunless %}
-      <div class="grid-uniform">
-        {{ related_items }}
-      </div>
+  <div class="related-products">
+    {% unless heading == blank %}
+    <div class="related-products--header">
+      <h2 class="related-products--title">{{ heading }}</h1>
     </div>
-  </aside>
+    {% endunless %}
+    <div class="grid-products">
+      {{ related_items }}
+    </div>
+  </div>
 
   {% endunless %}
-     
+
 {% endif %}

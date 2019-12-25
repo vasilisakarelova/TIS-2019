@@ -1,11 +1,6 @@
 <!-- snippets/featured-products.liquid -->
 
-<!--<div class="section-header text-center">
-  <h2 class="h1 section-header__title">{{ 'home_page.sections.featured_products' | t }}</h2>
-  <hr class="hr--small">
-</div>-->
-
-<div class="{% if settings.collection_products_grid == 'collage' %}grid grid-collage{% else %}grid-uniform{% endif %}">
+<div class="{% if settings.collection_products_grid == 'collage' %}grid grid-collage{% else %}grid-products{% endif %}">
 
   {% comment %}
     Loop through products in your Frontpage collection.

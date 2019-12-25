@@ -7,9 +7,9 @@
 
   {% assign current_variant = product.selected_or_first_available_variant %}
 
-  <div class="grid product-single">
-    <div class="grid__item large--seven-twelfths medium--seven-twelfths text-center">
-      <div class="product-single__photos">
+  <div class="grid product-page">
+    <div class="product-page--inner">
+      <div class="product-page--photos">
         {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
 
         {% comment %}
@@ -32,13 +32,13 @@
       </div>
     </div>
 
-    <div class="grid__item product-single__meta--wrapper medium--five-twelfths large--five-twelfths">
-      <div class="product-single__meta">
+    <div class="product-page--meta-wrapper">
+      <div class="product-page--meta">
         {% if settings.product_vendor_enable %}
-          <h2 class="product-single__vendor" itemprop="brand">{{ product.vendor }}</h2>
+          <div class="product-page--vendor" itemprop="brand">{{ product.vendor }}</div>
         {% endif %}
 
-        <h1 class="product-single__title" itemprop="name">{{ product.title }}</h1>
+        <div class="product-page--title" itemprop="name">{{ product.title }}</div>
 
         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
           {% comment %}
@@ -46,98 +46,87 @@
           {% endcomment %}
 
           {% if product.compare_at_price_max > product.price %}
-            <span id="PriceA11y" class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
-            <span class="product-single__price--wrapper">
+            <span class="product-page--price" id="PriceA11y" class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+            <span class="product-page--price product-single__price--wrapper">
               <span id="ComparePrice" class="product-single__price--compare-at">
                 {% if current_variant.compare_at_price > current_variant.price %}
                   {{ current_variant.compare_at_price | money }}
                 {% endif %}
               </span>
             </span>
-            <span id="ComparePriceA11y" class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+            <span id="ComparePriceA11y" class="product-page--price visually-hidden">{{ 'products.general.sale_price' | t }}</span>
           {% else %}
-            <span id="PriceA11y" class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+            <span id="PriceA11y" class="product-page--price visually-hidden">{{ 'products.general.regular_price' | t }}</span>
           {% endif %}
 
-          <span id="ProductPrice" class="product-single__price{% if product.compare_at_price > product.price %} on-sale{% endif %}" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+          <span id="ProductPrice" class="product-page--price{% if product.compare_at_price > product.price %} on-sale{% endif %}" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
             {{ current_variant.price | money }}
           </span>
 
           <br><br>
-{% unless product.available %}
-<div id="sold-out">
-  {% form 'contact' %}
-    {% if form.posted_successfully? %}
-    <p class="accent-text">Thanks! We will notify you when this product becomes available!</p>
-    {% else %}
-    <p>Click <a id="notify-me" href="#"><strong>here</strong></a> to be notified by email when {{ product.title }} becomes available.</p>
-    {% endif %}
-    {% if form.errors %}
-    <div class="error feedback accent-text">
-      <p>Please provide a valid email address.</p>
-    </div>
-    {% endif %}
-    {% unless form.posted_successfully? %}
-    <div id="notify-me-wrapper" class="clearfix" style="display:none">
-      {% if customer %}
-      <input type="hidden" name="contact[email]" value="{{ customer.email }}" />
-      {% else %}
-      <input style="float:left; width:180px;" required="required" type="email" name="contact[email]" placeholder="your@email.com" class="styled-input{% if form.errors contains 'email' %} error{% endif %}" value="{{ contact.fields.email }}" />
-      {% endif %}
-      <input type="hidden" name="contact[body]" value="Please notify me when {{ product.title | escape }} becomes available." />
-      <input style="float:left; margin-left:5px;" class="btn styled-submit" type="submit" value="Send" />
-    </div>
-    {% endunless %}
-    <script>
-    jQuery('#notify-me').click(function() {
-      {% if customer %}
-      jQuery('#sold-out form').submit();
-      {% else %}
-      jQuery('#notify-me-wrapper').fadeIn();
-      {% endif %}
-      return false;
-    } );
-    </script>
-  {% endform %}
-</div>
-{% endunless %}
+
+          {% unless product.available %}
+            <div id="sold-out">
+              {% form 'contact' %}
+                {% if form.posted_successfully? %}
+                <p class="accent-text">Thanks! We will notify you when this product becomes available!</p>
+                {% else %}
+                <p>Click <a id="notify-me" href="#"><strong>here</strong></a> to be notified by email when {{ product.title }} becomes available.</p>
+                {% endif %}
+                {% if form.errors %}
+                <div class="error feedback accent-text">
+                  <p>Please provide a valid email address.</p>
+                </div>
+                {% endif %}
+                {% unless form.posted_successfully? %}
+                <div id="notify-me-wrapper" class="clearfix" style="display:none">
+                  {% if customer %}
+                  <input type="hidden" name="contact[email]" value="{{ customer.email }}" />
+                  {% else %}
+                  <input style="float:left; width:180px;" required="required" type="email" name="contact[email]" placeholder="your@email.com" class="styled-input{% if form.errors contains 'email' %} error{% endif %}" value="{{ contact.fields.email }}" />
+                  {% endif %}
+                  <input type="hidden" name="contact[body]" value="Please notify me when {{ product.title | escape }} becomes available." />
+                  <input style="float:left; margin-left:5px;" class="btn styled-submit" type="submit" value="Send" />
+                </div>
+                {% endunless %}
+                <script>
+                jQuery('#notify-me').click(function() {
+                  {% if customer %}
+                  jQuery('#sold-out form').submit();
+                  {% else %}
+                  jQuery('#notify-me-wrapper').fadeIn();
+                  {% endif %}
+                  return false;
+                } );
+                </script>
+              {% endform %}
+            </div>
+          {% endunless %}
+
+          <div class="product-page--description" itemprop="description">
+            {{ product.description }}
+          </div>
 
           <meta itemprop="priceCurrency" content="{{ shop.currency }}">
           <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
-		{% if product.available %}
-          <form action="/cart/add" method="post" enctype="multipart/form-data" class="product-single__form" id="AddToCartForm">
-        {% endif %}
-           	<select name="id" id="ProductSelect" class="product-single__variants">
+		        {% if product.available %}
+            <form action="/cart/add" method="post" enctype="multipart/form-data" class="product-single__form" id="AddToCartForm">
+            {% endif %}
+            <select id="product-select" name="id">
               {% for variant in product.variants %}
-                {% if variant.available %}
-                  <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
-                {% else %}
-                  <option disabled="disabled">
-                    {{ variant.title }} - {{ 'products.product.sold_out' | t }}
-                  </option>
-                {% endif %}
+                <option value="{{ variant.id }}">
+                  {{ variant.title }} - {{ variant.price | money }}
+                </option>
               {% endfor %}
-            </select>
-
-            {% comment %}
-            <div class="product-single__quantity">
-              <label for="Quantity" class="product-single__quantity-label js-quantity-selector">{{ 'products.product.quantity' | t }}</label>
-              <input type="number" hidden="hidden" id="Quantity" name="quantity" value="1" min="1" class="js-quantity-selector">
-            </div>
-            {% endcomment %}
-
-            <div class="product-single__add-to-cart">
-              <button type="submit" name="add" id="AddToCart" class="btn">
-                <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
-              </button>
-            </div>
+              </select>
+              <div class="product-page--add-to-cart">
+                <button type="submit" name="add" id="AddToCart" class="product-page--add-to-cart-btn">
+                  <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+                </button>
+              </div>
             {% if product.available %}
-          </form>
-			{% endif %}
-        </div>
-
-        <div class="product-single__description rte" itemprop="description">
-          {{ product.description }}
+            </form>
+			      {% endif %}
         </div>
 
         {% if settings.social_sharing_products %}
@@ -147,17 +136,10 @@
     </div>
   </div>
 
-  {% if collection %}
-    <hr class="hr--clear">
-    <div class="text-center">
-      <a href="{{ collection.url }}" class="return-link">&larr; {{ 'products.general.collection_return' | t: collection: collection.title }}</a>
-    </div>
-  {% endif %}
-
 </div>
-<br>
-<br>
+
 {% include 'related-products' %}
+{% include 'option-selector-template' %}
 
 {% comment %}
 
@@ -180,36 +162,69 @@
   You will also need to change `.radio-wrapper` to `.selector-wrapper` below.
 
 {% endcomment %}
-{{ 'variant_selection.js' | asset_url | script_tag }}
+{{ 'handlebars.runtime-v4.5.3.js' | asset_url | script_tag }}
+{{ 'handlebars-helpers.js' | asset_url | script_tag }}
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+{{ 'option-selectors-custom.js' | asset_url | script_tag }}
 <script>
-  var selectCallback = function(variant, selector) {
-    timber.productPage({
-      money_format: "{{ shop.money_format }}",
-      variant: variant,
-      selector: selector,
-      translations: {
-        addToCart : {{ 'products.product.add_to_cart' | t | json }},
-        soldOut : {{ 'products.product.sold_out' | t | json }},
-        unavailable : {{ 'products.product.unavailable' | t | json }}
+  function doSelect(text,btn) {
+    var myElement = document.getElementById(btn)
+
+    myElement.innerText = text
+    myElement.parentNode.classList.remove('open')
+  }
+
+  jQuery(document).ready(function($) {
+    var variantCallback = function(variant, selector) {
+      var options = [].slice.call(document.querySelectorAll('.product-page--variants-list'))
+      options.forEach(function(option) {
+        option.addEventListener('pointerdown', function() {
+          option.classList.add('open')
+        })
+
+        option.addEventListener('mouseleave', function() {
+          option.classList.remove('open')
+        })
+      })
+
+      timber.productPage({
+        money_format: "{{ shop.money_format }}",
+        variant: variant,
+        selector: selector,
+        translations: {
+          addToCart : {{ 'products.product.add_to_cart' | t | json }},
+          soldOut : {{ 'products.product.sold_out' | t | json }},
+          unavailable : {{ 'products.product.unavailable' | t | json }}
+        }
+      });
+    };
+
+    new globalThis.optionSelectorsCustom({
+      element: '#product-select',
+      product: {{ product | json }},
+      enableHistory: true,
+      selectedClass: 'active',
+      callback: variantCallback,
+      template: globalThis.Handlebars.compile($('#option-selector-template').html()),
+      templateBuilder: function () {
+        var id = this.name
+        var obj = this.values.reduce(function (accumulator, currentValue) {
+          accumulator[currentValue] = id;
+          return accumulator;
+        }, {});
+
+        return this.template({
+          option_id: this.id,
+          option_name: this.name,
+          option_values: obj,
+          product_id: this.product.id,
+        });
       }
     });
-  };
-
-  jQuery(function($) {
-    new Shopify.OptionSelectors('ProductSelect', {
-      product: {{ product | json }},
-      onVariantSelected: selectCallback,
-      enableHistoryState: true
-    });
-
-    // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
-    {% if product.options.size == 1 and product.options.first != 'Title' %}
-      $('.radio-wrapper:eq(0)').prepend('<label for="ProductSelect-option-0" class="single-option-radio__label">{{ product.options.first | escape }}</label>');
-    {% endif %}
 
     // Hide drop-down selectors if we only have 1 variant and its title contains 'Default'.
     {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
-      $('.selector-wrapper').hide();
+      $('.product-page--variants-list').hide();
     {% endif %}
   });
 </script>
