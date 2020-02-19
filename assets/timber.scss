@@ -404,18 +404,6 @@ body {
   }
 }
 
-.main-content.is-index {
-  padding-top: $contentTopMarginSmall;
-
-  @include at-query($min, $postSmall) {
-    padding-bottom: 40px;
-  }
-
-  @include at-query($min, $large) {
-    padding-top: $contentTopMargin;
-  }
-}
-
 hr {
   clear: both;
   border-top: solid $colorBorder;
@@ -1487,10 +1475,6 @@ label.error {
 .selector-wrapper {
   label {
     margin-right: 10px;
-  }
-
-  + .selector-wrapper {
-    margin-top: $gutter / 2;
   }
 }
 

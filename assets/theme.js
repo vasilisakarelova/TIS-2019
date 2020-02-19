@@ -700,7 +700,7 @@ var slickTheme = (function(module, $) {
 
       var debugFormat = 'D.M.Y k:mm'; // pritty date print for debuging
       var slides = [];
-      var debugSlides = true;
+      var debugSlides = false;
       if(debugSlides) console.log('now: ', now.format(debugFormat));
 
       var slickIndex = 0;
@@ -1051,7 +1051,7 @@ var slickTheme = (function(module, $) {
 
     // Set an is-light or is-dark class on the header and nav dots to update colors
     if (settings.isFirstOnIndex) {
-      slickTheme.cache.$headerWrapper.removeClass('is-light is-dark').addClass(color);
+      // slickTheme.cache.$headerWrapper.removeClass('is-light is-dark').addClass(color);
     }
 
     // Set an is-light or is-dark class on nav dots to update colors

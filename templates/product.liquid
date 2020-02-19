@@ -112,12 +112,16 @@
 		        {% if product.available %}
             <form action="/cart/add" method="post" enctype="multipart/form-data" class="product-single__form" id="AddToCartForm">
             {% endif %}
-            <select id="product-select" name="id">
-              {% for variant in product.variants %}
-                <option value="{{ variant.id }}">
-                  {{ variant.title }} - {{ variant.price | money }}
-                </option>
-              {% endfor %}
+             	<select name="id" id="ProductSelect" class="product-single__variants">
+                {% for variant in product.variants %}
+                  {% if variant.available %}
+                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+                  {% else %}
+                    <option disabled="disabled">
+                      {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                    </option>
+                  {% endif %}
+                {% endfor %}
               </select>
               <div class="product-page--add-to-cart">
                 <button type="submit" name="add" id="AddToCart" class="product-page--add-to-cart-btn">
@@ -162,69 +166,49 @@
   You will also need to change `.radio-wrapper` to `.selector-wrapper` below.
 
 {% endcomment %}
-{{ 'handlebars.runtime-v4.5.3.js' | asset_url | script_tag }}
-{{ 'handlebars-helpers.js' | asset_url | script_tag }}
 {{ 'option_selection.js' | shopify_asset_url | script_tag }}
-{{ 'option-selectors-custom.js' | asset_url | script_tag }}
 <script>
-  function doSelect(text,btn) {
-    var myElement = document.getElementById(btn)
-
-    myElement.innerText = text
-    myElement.parentNode.classList.remove('open')
-  }
-
-  jQuery(document).ready(function($) {
-    var variantCallback = function(variant, selector) {
-      var options = [].slice.call(document.querySelectorAll('.product-page--variants-list'))
-      options.forEach(function(option) {
-        option.addEventListener('pointerdown', function() {
-          option.classList.add('open')
-        })
-
-        option.addEventListener('mouseleave', function() {
-          option.classList.remove('open')
-        })
-      })
-
-      timber.productPage({
-        money_format: "{{ shop.money_format }}",
-        variant: variant,
-        selector: selector,
-        translations: {
-          addToCart : {{ 'products.product.add_to_cart' | t | json }},
-          soldOut : {{ 'products.product.sold_out' | t | json }},
-          unavailable : {{ 'products.product.unavailable' | t | json }}
-        }
-      });
-    };
-
-    new globalThis.optionSelectorsCustom({
-      element: '#product-select',
-      product: {{ product | json }},
-      enableHistory: true,
-      selectedClass: 'active',
-      callback: variantCallback,
-      template: globalThis.Handlebars.compile($('#option-selector-template').html()),
-      templateBuilder: function () {
-        var id = this.name
-        var obj = this.values.reduce(function (accumulator, currentValue) {
-          accumulator[currentValue] = id;
-          return accumulator;
-        }, {});
-
-        return this.template({
-          option_id: this.id,
-          option_name: this.name,
-          option_values: obj,
-          product_id: this.product.id,
-        });
+  var selectCallback = function(variant, selector) {
+    timber.productPage({
+      money_format: "{{ shop.money_format }}",
+      variant: variant,
+      selector: selector,
+      translations: {
+        addToCart : {{ 'products.product.add_to_cart' | t | json }},
+        soldOut : {{ 'products.product.sold_out' | t | json }},
+        unavailable : {{ 'products.product.unavailable' | t | json }}
       }
     });
+  };
 
+  var open = function(elem) {
+    if (document.createEvent) {
+        var e = document.createEvent("MouseEvents");
+        e.initMouseEvent("mousedown", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+        elem[0].dispatchEvent(e);
+    } else if (element.fireEvent) {
+        elem[0].fireEvent("onmousedown");
+    }
+  }
+
+  jQuery(function($) {
+    new Shopify.OptionSelectors('ProductSelect', {
+      product: {{ product | json }},
+      onVariantSelected: selectCallback,
+      enableHistoryState: true
+    });
+    // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
+    {% if product.options.size == 1 and product.options.first != 'Title' %}
+      $('.radio-wrapper:eq(0)').prepend('<label for="ProductSelect-option-0" class="single-option-radio__label">{{ product.options.first | escape }}</label>');
+    {% endif %}
     // Hide drop-down selectors if we only have 1 variant and its title contains 'Default'.
     {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
-      $('.product-page--variants-list').hide();
+      $('.selector-wrapper').hide();
     {% endif %}
+
+    $('.selector-wrapper').click(function(ev) {
+      var id = ev.target.querySelector('select').id
+      open($('#' + id + ''))
+    })
   });
 </script>
