@@ -70,6 +70,7 @@
   <!-- CSS ================================================== -->
   {{ 'timber.scss.css' | asset_url | stylesheet_tag }}
   {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'additional-checkout-buttons.css' | asset_url | stylesheet_tag }}
   {% include 'google-fonts' %}
 
   <!-- page transition ================================================== -->
@@ -83,6 +84,7 @@
   {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
   {{ 'modernizr.min.js' | asset_url | script_tag }}
   {{ 'modernizr.custom.js' | asset_url | script_tag }}
+  {{ 'pauseresume.js' | asset_url | script_tag }}
 
   {% comment %}
     If you store has customer accounts disabled, you can remove the following JS file
@@ -110,7 +112,6 @@
               <path d="M1 1L61 61" stroke="black" stroke-width="2"/>
               <path d="M61 1L0.999997 61" stroke="black" stroke-width="2"/>
             </svg>
-            <span class="fallback-text">{{ 'cart.general.close_cart' | t }}</span>
           </button>
         </div>
       </div>
@@ -123,7 +124,7 @@
     </div>
   </div>
 
-  <div id="PageContainer" class="is-moved-by-drawer">
+  <div id="PageContainer" class="{% if template == 'index' %}main-wrapper is-index {% endif %}is-moved-by-drawer">
 
     <main class="main-content{% if template == 'index' %} is-index{% endif %}" role="main">
       {% if template == 'index' %}
@@ -138,7 +139,7 @@
         <header class="site-header" role="banner">
           <div class="wrapper">
             <div class="grid--full grid--flex">
-              <div class="grid__item one-quarter">
+              <div class="grid__item" style="width:auto;">
                 <div class="site-header__logo-new" itemscope itemtype="http://schema.org/Organization">
                   {% if settings.logo_use_image %}
                     {% if template == 'index' %}
@@ -265,12 +266,9 @@
       </div>
     {% endif %}
 
-    <!-- <hr class="hr--large"> -->
-
     {% if template != 'index' %}
       {% include 'footer' %}
     {% endif %}
-    {% include 'cookies-banner' %}
 
   </div>
 

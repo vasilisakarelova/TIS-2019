@@ -354,6 +354,24 @@ timber.updateSelectorLabel = function (evt, element) {
       renderedLabel,
       selectedVariant;
 
+  if (element !== undefined) {
+    var optionLength = element.options[element.selectedIndex].text.length
+    element.style.width = '100%'
+    if (optionLength === 1) {
+      element.style.textIndent = 'calc((100% / 2) - 15px)'
+    } else if (optionLength >= 5) {
+      element.style.textIndent = 'calc((100% / 2) - 40px)'
+    }
+  } else if (evt.target !== null) {
+    var optionLength = evt.target.options[evt.target.selectedIndex].text.length
+    evt.target.style.width = '100%'
+    if (optionLength === 1) {
+      evt.target.style.textIndent = 'calc((100% / 2) - 15px)'
+    } else if (optionLength >= 5) {
+      evt.target.style.textIndent = 'calc((100% / 2) - 40px)'
+    }
+  }
+
   // set $select based on whether function was called by
   // bound event or not
   var $select = evt ? $(evt.target) : $(element);
@@ -1454,22 +1472,94 @@ theme.createImageCarousel = function () {
     return;
   }
 
+  var slideIndex = 0
+  var speed = 3000
   theme.cache.$productImages.slick({
-    arrows: false,
     dots: true,
-    adaptiveHeight: true,
+    adaptiveHeight: false,
     draggable: false,
+    infinite: true,
+    fade: true,
+    pauseOnHover: false,
+    pauseOnFocus: false,
+    arrows: true,
+    prevArrow: '<button class="slick-prev slick-arrow" aria-label="Next" type="button" ></button>',
+    nextArrow: '<button class="slick-next slick-arrow" aria-label="Next" type="button" ></button>',
     customPaging: function(slider, i) {
       return '<a class="product-page--photos" href="#"></a>'
-    }
-  });
+    },
+    onBeforeChange: function(slick, currentSlide, nextSlide){
+      slideIndex = nextSlide
+      animateDot()
+    },
+  })
 
-  theme.cache.$productImages.find(".slick-slide").on("click", function(ev){
-    if (ev.offsetX >= (ev.target.offsetWidth / 2)) {
-      theme.cache.$productImages.slickNext();
-    } else if (ev.offsetX < (ev.target.offsetWidth / 2)) {
-      theme.cache.$productImages.slickPrev();
+  var dots = theme.cache.$productImages.find(".slick-dots li")
+
+  function setDotsBeforeAnimate() {
+    var e,
+        t,
+        n;
+    for (e = 0; e < dots.length; e++) {
+      t = dots.eq(e).find("a"), n = e < slideIndex ? "100%" : "0", t.stop().css("width", n)
     }
+  }
+
+  function animateDot() {
+    if (!(dots.length < 2)) {
+      setDotsBeforeAnimate()
+      var e,
+          currentDot = dots.eq(slideIndex).find("a");
+      e = slideIndex
+      currentDot.animate({
+          width: "100%"
+      }, speed, function() {
+        slideIndex === e && animateDotEnd()
+      })
+    }
+  }
+
+  function resetDot() {
+    slideIndex = 0
+    dots.find("a").css("width", 0)
+    setTimeout(function(){
+      theme.cache.$productImages.slickNext()
+    },100)
+  }
+
+  function animateDotEnd() {
+    slideIndex += 1
+    if(slideIndex === dots.length) {
+      resetDot()
+    } else {
+      setTimeout(function() {
+        theme.cache.$productImages.slickNext()
+      }, 100)
+    }
+  }
+
+  animateDot()
+
+  function onLongPress(element, callback) {
+    var timer;
+
+    element.addEventListener('touchstart', function() {
+      timer = setTimeout(function() {
+        timer = null;
+        callback();
+      }, 500);
+    });
+
+    function cancel() {
+      dots.eq(slideIndex).find("a").resume()
+      clearTimeout(timer);
+    }
+
+    element.addEventListener('touchend', cancel);
+  }
+
+  onLongPress(theme.cache.$productImages[0], function cb() {
+    dots.eq(slideIndex).find("a").pause()
   });
 };
 

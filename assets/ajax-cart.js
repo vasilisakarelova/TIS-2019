@@ -286,7 +286,7 @@ var ajaxCart = (function(module, $) {
     // Show empty cart
     if (cart.item_count === 0) {
       $cartContainer
-        .append('<p>' + "Your cart is currently empty." + '</p>');
+        .append('<p class="cart-is-empty">' + "Your cart is empty!" + '</p>');
       cartCallback(cart);
       return;
     }
