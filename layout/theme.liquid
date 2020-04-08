@@ -124,17 +124,9 @@
     </div>
   </div>
 
-  <div id="PageContainer" class="{% if template == 'index' %}main-wrapper is-index {% endif %}is-moved-by-drawer">
+  <div id="PageContainer" class="is-moved-by-drawer">
 
-    <main class="main-content{% if template == 'index' %} is-index{% endif %}" role="main">
-      {% if template == 'index' %}
-        <div id="pt-main">
-          <div class="pt-page" id="iterateEffects">
-            {% include 'hero' %}
-          </div>
-          <div class="pt-page">
-            <div class="pt-page-scroll">
-      {% endif %}
+    <main class="main-content" role="main">
       <div class="header-wrapper{% unless hero_full_height %} header-wrapper--over-hero{% endunless %}">
         <header class="site-header" role="banner">
           <div class="wrapper">
@@ -193,10 +185,7 @@
         {{ content_for_layout }}
       </div>
       {% if template == 'index' %}
-          {% include 'footer' %}
-            </div>
-          </div>
-        </div>
+        {% include 'footer' %}
       {% endif %}
     </main>
 
