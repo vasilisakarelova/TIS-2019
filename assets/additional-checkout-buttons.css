@@ -2,8 +2,6 @@ div._2PfRg7DFvcstLFRNRf5W1e[data-testid="grid-cell"] {
   margin-top: 5px !important;
 }
 
-@media screen and (min-width: 768px) {
-  .additional-checkout-buttons {
-    display: none;
-  }
+.additional-checkout-buttons {
+  display: none !important;
 }

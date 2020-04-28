@@ -3278,7 +3278,7 @@ button.mfp-arrow {
   height: 60px;
 
   @include at-query($min, $large) {
-    height: 120px;
+    height: 130px;
   }
 
   a {
@@ -3340,8 +3340,8 @@ button.mfp-arrow {
   margin-left: auto;
 
   @include at-query($min, $large) {
-    height: 120px;
-    width: 120px;
+    height: 130px;
+    width: 130px;
   }
 }
 
@@ -3352,8 +3352,8 @@ button.mfp-arrow {
   height: 100%;
 
   @include at-query($min, $large) {
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
   }
 
   svg {
@@ -3653,10 +3653,14 @@ button.mfp-arrow {
     line-height: 50px;
     letter-spacing: 0.03em;
     color: #000000;
-    text-transform: uppercase;
-    text-align: center;
+    text-transform: lowercase;
+    text-align: left;
     outline: none;
-    text-indent: calc(50% - 15px);
+    width: 100%;
+    padding-left: 8px;
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right;
+    -webkit-appearance: none;
+    background-position-x: calc(100% - 8px);
   }
 }
 
@@ -3921,8 +3925,8 @@ button.mfp-arrow {
   width: 60px;
 
   @include at-query($min, $large) {
-    height: 120px;
-    width: 120px;
+    height: 130px;
+    width: 130px;
   }
 
   button {

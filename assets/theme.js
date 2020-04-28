@@ -354,24 +354,6 @@ timber.updateSelectorLabel = function (evt, element) {
       renderedLabel,
       selectedVariant;
 
-  if (element !== undefined) {
-    var optionLength = element.options[element.selectedIndex].text.length
-    element.style.width = '100%'
-    if (optionLength === 1) {
-      element.style.textIndent = 'calc((100% / 2) - 15px)'
-    } else if (optionLength >= 5) {
-      element.style.textIndent = 'calc((100% / 2) - 40px)'
-    }
-  } else if (evt.target !== null) {
-    var optionLength = evt.target.options[evt.target.selectedIndex].text.length
-    evt.target.style.width = '100%'
-    if (optionLength === 1) {
-      evt.target.style.textIndent = 'calc((100% / 2) - 15px)'
-    } else if (optionLength >= 5) {
-      evt.target.style.textIndent = 'calc((100% / 2) - 40px)'
-    }
-  }
-
   // set $select based on whether function was called by
   // bound event or not
   var $select = evt ? $(evt.target) : $(element);
@@ -1772,3 +1754,17 @@ theme.debounce = function(n,t,u){var e;return function(){var a=this,r=arguments,
 
 // Initialize theme's JS on docready
 $(theme.init);
+
+$(document).ready(function() {
+  if( typeof(productOptions ) != "undefined" ){
+    for(i=0;i<productOptions.length;i++) {
+      $('.single-option-selector:eq('+ i +')')
+      .filter(function() {
+        return $(this).find('option').length > 1
+      })
+      .prepend('<option value="">select ' + productOptions[i][i] + '</option>')
+      .val('')
+      .trigger('change');
+    }
+  }
+});
