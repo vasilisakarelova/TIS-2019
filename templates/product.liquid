@@ -16,7 +16,7 @@
           Display current variant image, or default first
         {% endcomment %}
         <div class="product-single__photo-wrapper">
-          <img class="product-single__photo" id="ProductPhotoImg" src="{{ featured_image | img_url: '2048x2048' }}" {% if settings.product_zoom_enable %}data-mfp-src="{{ featured_image | img_url: '1024x1024' }}"{% endif %} alt="{{ featured_image.alt | escape }}" data-image-id="{{ featured_image.id }}">
+          <img class="product-single__photo" id="ProductPhotoImg" data-src="{{ featured_image | img_url: '2048x2048' }}" {% if settings.product_zoom_enable %}data-mfp-src="{{ featured_image | img_url: '1024x1024' }}"{% endif %} alt="{{ featured_image.alt | escape }}" data-image-id="{{ featured_image.id }}">
         </div>
 
         {% comment %}
@@ -25,7 +25,7 @@
         {% for image in product.images %}
           {% unless image contains featured_image %}
             <div class="product-single__photo-wrapper">
-              <img class="product-single__photo" src="{{ image.src | img_url: '2048x2048' }}" {% if settings.product_zoom_enable %}data-mfp-src="{{ image.src | img_url: '1024x1024' }}"{% endif %} alt="{{ image.alt | escape }}" data-image-id="{{ image.id }}">
+              <img class="product-single__photo" data-src="{{ image.src | img_url: '2048x2048' }}" {% if settings.product_zoom_enable %}data-mfp-src="{{ image.src | img_url: '1024x1024' }}"{% endif %} alt="{{ image.alt | escape }}" data-image-id="{{ image.id }}">
             </div>
           {% endunless %}
         {% endfor %}
@@ -46,7 +46,6 @@
           {% endcomment %}
 
           {% if product.compare_at_price_max > product.price %}
-            <span class="product-page--price" id="PriceA11y" class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
             <span class="product-page--price product-single__price--wrapper">
               <span id="ComparePrice" class="product-single__price--compare-at">
                 {% if current_variant.compare_at_price > current_variant.price %}
@@ -118,7 +117,11 @@
                   </div>
                 {% else %}
                   <button type="submit" name="add" id="AddToCart" class="product-page--add-to-cart-btn">
-                    <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+                    {% if product.available %}
+                      <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+                    {% else %}
+                      <span>sold out</span>
+                    {% endif %}
                   </button>
                 {% endif %}
               </div>
@@ -220,7 +223,7 @@
 </script>
 
 <script>
-var productOptions = [];
+  var productOptions = [];
   {% for option in product.options %}
   var optionObj = {};
   optionObj[ {{ forloop.index0 }} ] = "{{ product.options[forloop.index0] }}";

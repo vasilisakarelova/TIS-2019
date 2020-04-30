@@ -289,9 +289,12 @@ timber.productPage = function (options) {
       $comparePriceA11y = $('#ComparePriceA11y'),
       $priceWrapper = $('.product-single__price--wrapper'),
       $quantityElements = $('.js-quantity-selector, label + .js-qty'),
-      $addToCartText = $('#AddToCartText');
+      $addToCartText = $('#AddToCartText'),
+      $productImages = $('.product-page--photos');
 
   if (variant) {
+
+    $addToCart.removeClass('notice')
 
     // Update variant image, if one is set
     if (variant.featured_image) {
@@ -333,8 +336,11 @@ timber.productPage = function (options) {
     // This may be an error or notice that a specific variant is not available.
     // To only show available variants, implement linked product options:
     //   - http://docs.shopify.com/manual/configuration/store-customization/advanced-navigation/linked-product-options
-    $addToCart.addClass('disabled').prop('disabled', true);
-    $addToCartText.html(translations.unavailable);
+
+    // disable text change, so that there could always be an "add to cart button", and then an alert on click, if selection is not made
+    // $addToCart.addClass('disabled').prop('disabled', true);
+    // $addToCartText.html(translations.unavailable);
+
     $quantityElements.hide();
   }
 };
@@ -1178,6 +1184,7 @@ theme.variables = {
 
   // Breakpoints from src/stylesheets/global/variables.scss.liquid
   mediaQuerySmall     : 'screen and (max-width: 590px)',
+  mediaQuerySlider    : 'screen and (max-width: 769px)',
   mediaQueryMedium    : 'screen and (min-width: 591px) and (max-width: 768px)',
   mediaQueryLarge     : 'screen and (min-width: 769px)',
   bpSmall             : false
@@ -1206,7 +1213,7 @@ theme.initCache = function () {
     $indentedRteImages      : $('.rte--indented-images'),
 
     $productGridRows        : $('.collage-grid__row'),
-    $productGridItem        : $('.grid__product'),
+    $productGridItem        : $('.grid-product'),
     $productGridPhotosLarge : $('.grid__item--large .grid-product__image-link'),
 
     // Equal height elements
@@ -1228,7 +1235,7 @@ theme.init = function () {
   theme.checkoutIndicator();
   theme.collectionParallax();
 
-    theme.equalHeights();
+  theme.equalHeights();
 
   theme.collectionBackButton();
   theme.hideSingleSelectors();
@@ -1246,6 +1253,21 @@ theme.init = function () {
   theme.cache.$window.on('resize', theme.debounce(theme.resizeLogo, 150));
   theme.cache.$window.on('resize', theme.debounce(theme.initStickyProductMeta, 150));
 
+  var imgs = [].slice.call(document.querySelectorAll('.grid-product__image'))
+  imgs.forEach(function(image, i) {
+    image.addEventListener('load', function() {
+      image.style.opacity = 1
+    })
+    image.src = image.dataset.src
+  });
+
+  var productimgs = [].slice.call(document.querySelectorAll('.product-single__photo'))
+  productimgs.forEach(function(image, i) {
+    image.addEventListener('load', function() {
+      image.style.opacity = 1
+    })
+    image.src = image.dataset.src
+  })
 };
 
 theme.collectionBackButton = function () {
@@ -1274,7 +1296,7 @@ theme.backButton = function () {
 
 theme.setBreakpoints = function () {
   if(!theme.cache.$html.hasClass('lt-ie9')) {
-    enquire.register(theme.variables.mediaQuerySmall, {
+    enquire.register(theme.variables.mediaQuerySlider, {
       match: function () {
         theme.createImageCarousel();
 
@@ -1550,6 +1572,9 @@ theme.destroyImageCarousel = function () {
     return;
   }
 
+  var dots = theme.cache.$productImages.find(".slick-dots li")
+  var index = theme.cache.$productImages.slickCurrentSlide()
+  dots.eq(index).find("a").pause()
   theme.cache.$productImages.unslick();
 };
 
@@ -1678,7 +1703,6 @@ theme.hideSingleSelectors = function () {
 
 theme.showVariantImage = function (src, imgObject, el) {
   // Called when a new product variant is selected
-
   var $newImage = $('.product-single__photo[data-image-id="'+ imgObject.id +'"]');
 
   if (theme.variables.productPageLoad) {
@@ -1767,4 +1791,6 @@ $(document).ready(function() {
       .trigger('change');
     }
   }
+
+
 });

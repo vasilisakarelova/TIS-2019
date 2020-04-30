@@ -239,6 +239,7 @@ function floatToString(t, e) {
         // n.dataset.available = o.product.variants[r].available
         if (!o.product.variants[r].available) {
           n.disabled = true
+          n.innerHTML = o.product.variants[r].title + ' - sold out'
         }
         this.element.appendChild(n)
     }

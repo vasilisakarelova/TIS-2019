@@ -2704,9 +2704,10 @@ button.mfp-arrow {
 
 .grid-product__image-link {
   position: relative;
+  padding-top: 142.81729428172943%;
   display: block;
   width: 100%;
-  background-color: $colorProductBackground;
+  background-color: #fafafa;
   @include transition(opacity 0.4s ease-out);
 
   .grid-uniform & {
@@ -2716,9 +2717,36 @@ button.mfp-arrow {
   }
 }
 
+.product-single__photo-wrapper {
+  @include at-query($min, $large) {
+    position: relative;
+    padding-top: 142.81729428172943%;
+    display: block;
+    background-color: #fafafa;
+  }
+}
+
+.product-single__photo-wrapper img {
+  @include at-query($min, $large) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: block;
+    opacity: 0;
+    @include transition(opacity 0.4s ease-out);
+  }
+}
+
 .grid-product__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: block;
   margin: 0 auto;
+  opacity: 0;
+  @include transition(opacity 0.4s ease-out);
 
   .is-sold-out & {
     opacity: 1;
@@ -3241,6 +3269,14 @@ button.mfp-arrow {
   }
 }
 
+.grid-product-new__price.is-regular {
+  text-decoration: line-through;
+}
+
+.grid-product-new__price.is-sale {
+  color: rgb(255,0,0);
+}
+
 .grid-product-new__meta {
   position: relative;
   display: block;
@@ -3634,6 +3670,10 @@ button.mfp-arrow {
   }
 }
 
+.product-page--price.on-sale {
+  color: rgb(255,0,0);
+}
+
 .selector-wrapper {
   label {
     display: none;
@@ -3778,6 +3818,7 @@ button.mfp-arrow {
   width: 100%;
   height: 50px;
   border-radius: 3px;
+  overflow: hidden;
 }
 
 .product-page--add-to-cart-btn {
@@ -3797,6 +3838,10 @@ button.mfp-arrow {
   padding: 0;
   margin: 0;
   text-transform: lowercase;
+}
+
+.product-page--add-to-cart-btn.notice {
+  background-color: rgb(255,0,0);
 }
 
 .product-page--add-to-cart-btn[disabled],

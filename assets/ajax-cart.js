@@ -266,6 +266,11 @@ var ajaxCart = (function(module, $) {
     var data = eval('(' + XMLHttpRequest.responseText + ')');
     $addToCart.removeClass('is-adding is-added');
 
+    /* custom by Vasilisa, 29.04 */
+    $addToCart.addClass('notice');
+    $('#AddToCartText').html('make a selection');
+    /* end custom */
+
     if (!!data.message) {
       if (data.status == 422) {
         $formContainer.after('<div class="errors qty-error">'+ data.description +'</div>')
