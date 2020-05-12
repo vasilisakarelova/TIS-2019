@@ -1493,7 +1493,7 @@ a {
   @include at-query($min, $large) {
     padding-left: 10px;
     padding-right: 10px;
-    top: 140px;
+    top: 70px;
   }
 
   .drawer--has-fixed-footer & {
@@ -2268,17 +2268,6 @@ $slick-opacity-not-active: 0.25;
     @include animation(fadeIn 1s cubic-bezier(0.44, 0.13, 0.48, 0.87));
   }
 }
-
-/*================ Module | Theme Header and Navigation Overrides ================*/
-@include at-query($max, $medium) {
-  .site-header {
-    .grid--table,
-    .grid--flex {
-      height: $drawerHeaderHeight;
-    }
-  }
-}
-
 
 /*================ Logo Image ================*/
 .site-header__logo .logo--has-inverted {
@@ -3372,10 +3361,6 @@ button.mfp-arrow {
   display: block;
   height: 60px;
 
-  @include at-query($min, $large) {
-    height: 130px;
-  }
-
   a {
     position: relative;
     display: block;
@@ -3433,11 +3418,6 @@ button.mfp-arrow {
   width: 60px;
   height: 60px;
   margin-left: auto;
-
-  @include at-query($min, $large) {
-    height: 130px;
-    width: 130px;
-  }
 }
 
 .icon-cart__new {
@@ -3445,11 +3425,6 @@ button.mfp-arrow {
   display: block;
   width: 100%;
   height: 100%;
-
-  @include at-query($min, $large) {
-    width: 130px;
-    height: 130px;
-  }
 
   svg {
     position: relative;
@@ -3470,11 +3445,6 @@ button.mfp-arrow {
   line-height: 27px;
   letter-spacing: 0.03em;
   color: #000000;
-
-  @include at-query($min, $large) {
-    font-size: 56px;
-    top: 64%;
-  }
 }
 
 .site-nav--mobile-new {
@@ -3727,6 +3697,10 @@ button.mfp-arrow {
   @include at-query($min, $large) {
     text-align: left;
   }
+}
+
+.product-page--vendor {
+  text-decoration: underline;
 }
 
 .product-page--price.on-sale {
@@ -3999,7 +3973,6 @@ button.mfp-arrow {
     width: calc(100% - 20px);
     left: 10px;
     top: 10px;
-    height: 130px;
 
     .site-header__logo-new {
       display: none;
@@ -4027,11 +4000,6 @@ button.mfp-arrow {
   display: block;
   height: 60px;
   width: 60px;
-
-  @include at-query($min, $large) {
-    height: 130px;
-    width: 130px;
-  }
 
   button {
     position: relative;
@@ -4216,4 +4184,41 @@ button.mfp-arrow {
   line-height: 24px;
   letter-spacing: 0.03em;
   color: #333333;
+  margin-left: 0;
+}
+
+
+/* vasilisa, 11.05.2020 */
+.announcement-bar {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 25px;
+  text-align: center;
+  font-size: 9px;
+  line-height: 25px;
+  background: #CCE3FF;
+
+  @include at-query($min, $large) {
+    font-size: 16px;
+    height: 35px;
+    line-height: 35px;
+  }
+}
+
+.announcement-bar.is-hidden {
+  display: none;
+}
+
+.announcement-bar--close {
+  text-decoration: underline;
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+.grid-content--item {
+  position: relative;
+  margin: 0 auto;
+  max-width: 940px;
+  padding-bottom: 100px;
 }

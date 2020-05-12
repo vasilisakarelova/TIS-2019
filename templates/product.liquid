@@ -39,7 +39,7 @@
     <div class="product-page--meta-wrapper">
       <div class="product-page--meta">
         {% if settings.product_vendor_enable %}
-          <div class="product-page--vendor" itemprop="brand">{{ product.vendor }}</div>
+          {{ product.vendor | link_to_vendor | replace: '<a', '<a class="product-page--vendor"' }}
         {% endif %}
 
         <div class="product-page--title" itemprop="name">{{ product.title }}</div>

@@ -280,7 +280,7 @@ $drawerNavWidth: 100vw;
 $drawerCartWidth: 100vw;
 $drawerCartWidthLarge: 400px; // small-up width
 $drawerHeaderHeight: 80px;
-$drawerCartFooterHeight: 130px; // default, overwritten by JS
+$drawerCartFooterHeight: 60px; // default, overwritten by JS
 $colorDrawers: #fbfbfb;
 $colorDrawerBorder: #000000;
 $colorDrawerText: #000000;
@@ -2178,7 +2178,7 @@ $socialIconFontStack: 'icons';
   padding: 0;
 
   .grid--flex {
-    height: 130px;
+    height: 60px;
   }
 
   a {
