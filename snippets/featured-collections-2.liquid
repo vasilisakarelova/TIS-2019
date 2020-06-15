@@ -1,0 +1,33 @@
+<!-- snippets/featured-collections-2.liquid -->
+
+<div class="featured-collections at-bottom" style="display: none">
+  {% if settings.collection_3 != blank %}
+    <div class="featured-collections--item">
+      <div class="featured-collections--item-image">
+        <img src="{{ collections[settings.collection_3].image.src | img_url: '1400x' }}" />
+      </div>
+      <div class="featured-collections--item-title">{{ collections[settings.collection_3].title }}</div>
+      {% if collections[settings.collection_3].description != blank %}
+        <div class="featured-collections--item-desc">{{ collections[settings.collection_3].description }}</div>
+      {% endif %}
+      <div class="featured-collections--item-link">
+        <a href="{{ collections[settings.collection_3].url }}">Shop now</a>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if settings.collection_4 != blank %}
+    <div class="featured-collections--item">
+      <div class="featured-collections--item-image">
+        <img src="{{ collections[settings.collection_4].image.src | img_url: '1400x' }}" />
+      </div>
+      <div class="featured-collections--item-title">{{ collections[settings.collection_4].title }}</div>
+      {% if collections[settings.collection_4].description != blank %}
+        <div class="featured-collections--item-desc">{{ collections[settings.collection_4].description }}</div>
+      {% endif %}
+      <div class="featured-collections--item-link">
+        <a href="{{ collections[settings.collection_4].url }}">Shop now</a>
+      </div>
+    </div>
+  {% endif %}
+</div>

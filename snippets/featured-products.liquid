@@ -22,7 +22,9 @@
       {% assign emptyState = true %}
     {% endunless %}
 
-    {% include 'onboarding-featured-products' %}
+    {% comment %}
+      {% include 'onboarding-featured-products' %}
+    {% endcomment %}
 
   {% else %}
 
@@ -44,9 +46,14 @@
     {% else %}
 
       {% assign grid_item_width = 'medium--one-half large--one-third' %}
-      {% for product in collections[settings.home_featured_products].products %}
-        {% include 'product-grid-item' %}
-      {% endfor %}
+      {% assign collection_product_count__product = collections[settings.home_featured_products].products_count %}
+
+      {% paginate collections[settings.home_featured_products].products by 75 %}
+        {% for product in collections[settings.home_featured_products].products %}
+          {% include 'product-grid-item' %}
+        {% endfor %}
+        {{ paginate | default_pagination }}
+      {% endpaginate %}
 
     {% endif %}
 

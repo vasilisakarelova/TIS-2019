@@ -328,10 +328,12 @@ $passwordPageUseBgImage: true;
 
 /*================ Typography ================*/
 
-
-
-
-
+/* typography changes, vasilisa, 10.06.2020 */
+$mobileSmallFont: 9px;
+$desktopSmallFont: 11px;
+$desktopSmallLineHeight: 16px;
+$bigFont: 21px;
+/* end changes, vasilisa */
 
 $headerFontStack: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $headerFontWeight: 400;
@@ -1183,7 +1185,7 @@ input[type="image"] {
 .newsletter--headline {
   position: relative;
   display: block;
-  font-size: 21px;
+  font-size: $bigFont;
   line-height: 50px;
   letter-spacing: 0.05em;
   text-align: center;
@@ -1204,14 +1206,15 @@ input[type="image"] {
   font-family: Helvetica;
   font-style: normal;
   font-weight: normal;
-  font-size: 9px;
+  font-size: $mobileSmallFont;
+  text-transform: uppercase;
   line-height: 13px;
   letter-spacing: 0.05em;
   color: rgb(0, 0, 0);
 
   @include at-query($min, $large) {
-    font-size: 16px;
-    line-height: 20px;
+    font-size: $desktopSmallFont;
+    line-height: $desktopSmallLineHeight;
     letter-spacing: 0.03em;
   }
 }
@@ -1223,7 +1226,7 @@ input[type="image"] {
   background: #fff;
   height: 50px;
   line-height: 50px;
-  font-size: 21px;
+  font-size: $bigFont;
   border-radius: 3px;
   width: 100%;
   text-align: center;
@@ -1252,7 +1255,7 @@ input[type="image"] {
   border-radius: 3px;
   height: 50px;
   line-height: 47px;
-  font-size: 21px;
+  font-size: $bigFont;
   color: #fff;
   width: 100%;
   text-transform: lowercase;
@@ -1521,7 +1524,7 @@ p.cart-is-empty {
   font-family: Helvetica;
   font-style: normal;
   font-weight: normal;
-  font-size: 21px;
+  font-size: $bigFont;
   line-height: 50px;
   letter-spacing: 0.03em;
   color: #000000;
@@ -3333,14 +3336,15 @@ button.mfp-arrow {
   font-family: Helvetica;
   font-style: normal;
   font-weight: normal;
-  font-size: 9px;
+  font-size: $mobileSmallFont;
+  text-transform: uppercase;
   line-height: 13px;
   letter-spacing: 0.05em;
   color: #000000;
 
   @include at-query($min, $large) {
-    font-size: 16px;
-    line-height: 20px;
+    font-size: $desktopSmallFont;
+    line-height: $desktopSmallLineHeight;
     letter-spacing: 0.03em;
   }
 }
@@ -3481,7 +3485,7 @@ button.mfp-arrow {
     font-family: Helvetica;
     font-style: normal;
     font-weight: normal;
-    font-size: 21px;
+    font-size: $bigFont;
     line-height: 24px;
     letter-spacing: 0.03em;
     color: $tisblue;
@@ -3527,7 +3531,7 @@ button.mfp-arrow {
   font-family: Helvetica;
   font-style: normal;
   font-weight: normal;
-  font-size: 21px;
+  font-size: $bigFont;
   height: 50px;
   line-height: 50px;
   letter-spacing: 0.05em;
@@ -3569,15 +3573,16 @@ button.mfp-arrow {
   font-family: Helvetica;
   font-style: normal;
   font-weight: normal;
-  font-size: 9px;
+  font-size: $mobileSmallFont;
+  text-transform: uppercase;
   line-height: 13px;
   letter-spacing: 0.05em;
   color: #ABABAB;
 
   @include at-query($min, $large) {
     height: 70px;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: $desktopSmallFont;
+    line-height: $desktopSmallLineHeight;
     letter-spacing: 0.03em;
   }
 
@@ -3688,7 +3693,7 @@ button.mfp-arrow {
   font-family: Helvetica;
   font-style: normal;
   font-weight: normal;
-  font-size: 21px;
+  font-size: $bigFont;
   line-height: 24px;
   text-align: center;
   letter-spacing: 0.03em;
@@ -3722,7 +3727,7 @@ button.mfp-arrow {
     font-family: Helvetica;
     font-style: normal;
     font-weight: normal;
-    font-size: 21px;
+    font-size: $bigFont;
     line-height: 50px;
     letter-spacing: 0.03em;
     color: #000000;
@@ -3782,7 +3787,7 @@ button.mfp-arrow {
   font-family: Helvetica;
   font-style: normal;
   font-weight: normal;
-  font-size: 21px;
+  font-size: $bigFont;
   line-height: 50px;
   align-items: center;
   text-align: center;
@@ -3863,7 +3868,7 @@ button.mfp-arrow {
   font-family: Helvetica;
   font-style: normal;
   font-weight: normal;
-  font-size: 21px;
+  font-size: $bigFont;
   line-height: 50px;
   text-align: center;
   letter-spacing: 0.03em;
@@ -3892,7 +3897,7 @@ button.mfp-arrow {
   font-family: Helvetica;
   font-style: normal;
   font-weight: normal;
-  font-size: 21px;
+  font-size: $bigFont;
   line-height: 24px;
   text-align: center;
   letter-spacing: 0.03em;
@@ -3953,7 +3958,7 @@ button.mfp-arrow {
   font-family: Helvetica;
   font-style: normal;
   font-weight: normal;
-  font-size: 21px;
+  font-size: $bigFont;
   line-height: 24px;
   letter-spacing: 0.03em;
   color: #000000;
@@ -4034,7 +4039,7 @@ button.mfp-arrow {
   font-family: Helvetica;
   font-style: normal;
   font-weight: normal;
-  font-size: 21px;
+  font-size: $bigFont;
   line-height: 24px;
   letter-spacing: 0.03em;
   color: #000000;
@@ -4050,7 +4055,7 @@ button.mfp-arrow {
   font-family: Helvetica;
   font-style: normal;
   font-weight: normal;
-  font-size: 21px;
+  font-size: $bigFont;
   line-height: 24px;
   letter-spacing: 0.03em;
   color: #000000;
@@ -4070,7 +4075,7 @@ button.mfp-arrow {
   font-family: Helvetica;
   font-style: normal;
   font-weight: normal;
-  font-size: 21px;
+  font-size: $bigFont;
   line-height: 24px;
   letter-spacing: 0.03em;
 }
@@ -4088,7 +4093,7 @@ button.mfp-arrow {
   font-family: Helvetica;
   font-style: normal;
   font-weight: normal;
-  font-size: 21px;
+  font-size: $bigFont;
   line-height: 24px;
   letter-spacing: 0.03em;
   color: #000000;
@@ -4117,7 +4122,7 @@ button.mfp-arrow {
   font-family: Helvetica;
   font-style: normal;
   font-weight: normal;
-  font-size: 21px;
+  font-size: $bigFont;
   line-height: 24px;
   letter-spacing: 0.03em;
   color: #000000;
@@ -4127,7 +4132,7 @@ button.mfp-arrow {
   font-family: Helvetica;
   font-style: normal;
   font-weight: normal;
-  font-size: 21px;
+  font-size: $bigFont;
   line-height: 50px;
   letter-spacing: 0.03em;
   color: #000000;
@@ -4144,7 +4149,7 @@ button.mfp-arrow {
   font-family: Helvetica;
   font-style: normal;
   font-weight: normal;
-  font-size: 21px;
+  font-size: $bigFont;
   line-height: 50px;
   letter-spacing: 0.03em;
   text-align: center;
@@ -4164,7 +4169,7 @@ button.mfp-arrow {
   font-family: Helvetica;
   font-style: normal;
   font-weight: normal;
-  font-size: 21px;
+  font-size: $bigFont;
   line-height: 50px;
   letter-spacing: 0.03em;
   text-align: center;
@@ -4180,7 +4185,7 @@ button.mfp-arrow {
   font-family: Helvetica;
   font-style: normal;
   font-weight: normal;
-  font-size: 21px;
+  font-size: $bigFont;
   line-height: 24px;
   letter-spacing: 0.03em;
   color: #333333;
@@ -4195,14 +4200,17 @@ button.mfp-arrow {
   width: 100%;
   height: 25px;
   text-align: center;
-  font-size: 9px;
+  font-size: $mobileSmallFont;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   line-height: 25px;
   background: #CCE3FF;
 
   @include at-query($min, $large) {
-    font-size: 16px;
-    height: 35px;
+    font-size: $desktopSmallFont;
     line-height: 35px;
+    letter-spacing: 0.03em;
+    height: 35px;
   }
 }
 
@@ -4221,4 +4229,77 @@ button.mfp-arrow {
   margin: 0 auto;
   max-width: 940px;
   padding-bottom: 100px;
+}
+
+/* vasilisa, 10.06.2020 */
+.collection-info {
+  padding: 60px 0;
+  text-align: center;
+}
+
+.collection-info--title {
+  font-size: $mobileSmallFont;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  @include at-query($min, $large) {
+    font-size: $desktopSmallFont;
+    line-height: $desktopSmallLineHeight;
+    letter-spacing: 0.03em;
+  }
+}
+
+.collection-info--desc {
+  font-size: $mobileSmallFont;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-top: 10px;
+
+  @include at-query($min, $large) {
+    font-size: $desktopSmallFont;
+    line-height: $desktopSmallLineHeight;
+    letter-spacing: 0.03em;
+    max-width: 940px;
+    margin: 0 auto;
+  }
+}
+
+.featured-collections {
+  position: relative;
+  display: block;
+
+  @include at-query($min, $large) {
+    display: grid;
+    grid-template-columns: repeat(2, calc((100% - 10px) / 2));
+    grid-column-gap: 10px;
+    padding-bottom: 30px;
+  }
+}
+
+.featured-collections--item {
+  text-align: center;
+  font-size: $mobileSmallFont;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-bottom: 30px;
+
+  @include at-query($min, $large) {
+    font-size: $desktopSmallFont;
+    line-height: $desktopSmallLineHeight;
+    letter-spacing: 0.03em;
+    padding-bottom: 0px;
+    text-align: left;
+  }
+}
+
+.featured-collections--item-desc {
+  padding: 10px 0;
+
+  @include at-query($min, $large) {
+    max-width: 70%;
+  }
+}
+
+.featured-collections--item-link a {
+  text-decoration: underline;
 }

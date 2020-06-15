@@ -39,7 +39,12 @@
     <div class="product-page--meta-wrapper">
       <div class="product-page--meta">
         {% if settings.product_vendor_enable %}
-          {{ product.vendor | link_to_vendor | replace: '<a', '<a class="product-page--vendor"' }}
+          {% assign vendor_handle = product.vendor | handleize %}
+          {% if collections[vendor_handle] != blank %}
+            {{ product.vendor | link_to: collections[vendor_handle].url | replace: '<a', '<a class="product-page--vendor"' }}
+          {% else %}
+            {{ product.vendor | link_to_vendor | replace: '<a', '<a class="product-page--vendor"' }}
+          {% endif %}
         {% endif %}
 
         <div class="product-page--title" itemprop="name">{{ product.title }}</div>
