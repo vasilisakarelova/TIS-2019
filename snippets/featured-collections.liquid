@@ -1,33 +1,57 @@
 <!-- snippets/featured-collections.liquid -->
 
 <div class="featured-collections" style="display: none">
-  {% if settings.collection_1 != blank %}
-    <div class="featured-collections--item">
-      <div class="featured-collections--item-image">
+  <div class="featured-collections--item">
+    <div class="featured-collections--item-image">
+      {% if settings.featured_collection_1 != blank %}
+        <img src="{{ collections[settings.featured_collection_1].image.src | img_url: '1400x' }}" />
+      {% endif %}
+      {% if settings.featured_collection_product_1 != blank %}
+        <img class="product" src="{{ all_products[settings.featured_collection_product_1].featured_image.src | img_url: '1400x' }}" />
+      {% endif %}
+      {% if settings.featured_collection_blog_1 != blank %}
         <img src="{{ collections[settings.collection_1].image.src | img_url: '1400x' }}" />
-      </div>
-      <div class="featured-collections--item-title">{{ collections[settings.collection_1].title }}</div>
-      {% if collections[settings.collection_1].description != blank %}
-        <div class="featured-collections--item-desc">{{ collections[settings.collection_1].description }}</div>
       {% endif %}
-      <div class="featured-collections--item-link">
-        <a href="{{ collections[settings.collection_1].url }}">Shop now</a>
-      </div>
     </div>
-  {% endif %}
+    <div class="featured-collections--item-title">{{ settings.featured_collection_title_1 }}</div>
+    <div class="featured-collections--item-desc">{{ settings.featured_collection_description_1 }}</div>
+    <div class="featured-collections--item-link">
+      {% if settings.featured_collection_1 != blank %}
+        <a href="{{ collections[settings.featured_collection_1].url }}">{{ settings.featured_collection_link_1 }}</a>
+      {% endif %}
+      {% if settings.featured_collection_product_1 != blank %}
+        <a href="{{ all_products[settings.featured_collection_product_1].url }}">{{ settings.featured_collection_link_1 }}</a>
+      {% endif %}
+      {% if settings.featured_collection_blog_1 != blank %}
+        <a href="{{ articles[settings.featured_collection_blog_1].url }}">{{ settings.featured_collection_link_1 }}</a>
+      {% endif %}
+    </div>
+  </div>
 
-  {% if settings.collection_2 != blank %}
-    <div class="featured-collections--item">
-      <div class="featured-collections--item-image">
-        <img src="{{ collections[settings.collection_2].image.src | img_url: '1400x' }}" />
-      </div>
-      <div class="featured-collections--item-title">{{ collections[settings.collection_2].title }}</div>
-      {% if collections[settings.collection_2].description != blank %}
-        <div class="featured-collections--item-desc">{{ collections[settings.collection_2].description }}</div>
+  <div class="featured-collections--item">
+    <div class="featured-collections--item-image">
+      {% if settings.featured_collection_2 != blank %}
+        <img src="{{ collections[settings.featured_collection_2].image.src | img_url: '1400x' }}" />
       {% endif %}
-      <div class="featured-collections--item-link">
-        <a href="{{ collections[settings.collection_2].url }}">Shop now</a>
-      </div>
+      {% if settings.featured_collection_product_2 != blank %}
+        <img class="product" src="{{ all_products[settings.featured_collection_product_2].featured_image.src | img_url: '1400x' }}" />
+      {% endif %}
+      {% if settings.featured_collection_blog_2 != blank %}
+        <img src="{{ articles[settings.featured_collection_blog_2].image.src | img_url: '1400x' }}" />
+      {% endif %}
     </div>
-  {% endif %}
+    <div class="featured-collections--item-title">{{ settings.featured_collection_title_2 }}</div>
+    <div class="featured-collections--item-desc">{{ settings.featured_collection_description_2 }}</div>
+    <div class="featured-collections--item-link">
+      {% if settings.featured_collection_2 != blank %}
+        <a href="{{ collections[settings.featured_collection_2].url }}">{{ settings.featured_collection_link_2 }}</a>
+      {% endif %}
+      {% if settings.featured_collection_product_2 != blank %}
+        <a href="{{ all_products[settings.featured_collection_product_2].url }}">{{ settings.featured_collection_link_2 }}</a>
+      {% endif %}
+      {% if settings.featured_collection_blog_2 != blank %}
+        <a href="{{ articles[settings.featured_collection_blog_2].url }}">{{ settings.featured_collection_link_2 }}</a>
+      {% endif %}
+    </div>
+  </div>
 </div>
