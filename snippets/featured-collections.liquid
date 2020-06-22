@@ -4,13 +4,29 @@
   <div class="featured-collections--item">
     <div class="featured-collections--item-image">
       {% if settings.featured_collection_1 != blank %}
-        <img src="{{ collections[settings.featured_collection_1].image.src | img_url: '1400x' }}" />
+        <a href="{{ collections[settings.featured_collection_1].url }}">
+      {% elsif settings.featured_collection_product_1 != blank %}
+        <a href="{{ all_products[settings.featured_collection_product_1].url }}">
+      {% elsif settings.featured_collection_blog_1 != blank %}
+        <a href="{{ articles[settings.featured_collection_blog_1].url }}">
       {% endif %}
-      {% if settings.featured_collection_product_1 != blank %}
-        <img class="product" src="{{ all_products[settings.featured_collection_product_1].featured_image.src | img_url: '1400x' }}" />
-      {% endif %}
-      {% if settings.featured_collection_blog_1 != blank %}
-        <img src="{{ collections[settings.collection_1].image.src | img_url: '1400x' }}" />
+
+        {% if settings.featured_collection_image_1 != blank %}
+          <img class="image" src="{{ settings.featured_collection_image_1 | img_url: '1400x' }}" />
+        {% elsif settings.featured_collection_1 != blank %}
+          <img class="collection-image" src="{{ collections[settings.featured_collection_1].image.src | img_url: '1400x' }}" />
+        {% elsif settings.featured_collection_product_1 != blank %}
+          <img class="product-image" src="{{ all_products[settings.featured_collection_product_1].featured_image.src | img_url: '1400x' }}" />
+        {% elsif settings.featured_collection_blog_1 != blank %}
+          <img class="article-image" src="{{ collections[settings.collection_1].image.src | img_url: '1400x' }}" />
+        {% endif %}
+
+      {% if settings.featured_collection_1 != blank %}
+        </a>
+      {% elsif settings.featured_collection_product_1 != blank %}
+        </a>
+      {% elsif settings.featured_collection_blog_1 != blank %}
+        </a>
       {% endif %}
     </div>
     <div class="featured-collections--item-title">{{ settings.featured_collection_title_1 }}</div>
@@ -18,11 +34,9 @@
     <div class="featured-collections--item-link">
       {% if settings.featured_collection_1 != blank %}
         <a href="{{ collections[settings.featured_collection_1].url }}">{{ settings.featured_collection_link_1 }}</a>
-      {% endif %}
-      {% if settings.featured_collection_product_1 != blank %}
+      {% elsif settings.featured_collection_product_1 != blank %}
         <a href="{{ all_products[settings.featured_collection_product_1].url }}">{{ settings.featured_collection_link_1 }}</a>
-      {% endif %}
-      {% if settings.featured_collection_blog_1 != blank %}
+      {% elsif settings.featured_collection_blog_1 != blank %}
         <a href="{{ articles[settings.featured_collection_blog_1].url }}">{{ settings.featured_collection_link_1 }}</a>
       {% endif %}
     </div>
@@ -31,13 +45,29 @@
   <div class="featured-collections--item">
     <div class="featured-collections--item-image">
       {% if settings.featured_collection_2 != blank %}
-        <img src="{{ collections[settings.featured_collection_2].image.src | img_url: '1400x' }}" />
+        <a href="{{ collections[settings.featured_collection_2].url }}">
+      {% elsif settings.featured_collection_product_2 != blank %}
+        <a href="{{ all_products[settings.featured_collection_product_2].url }}">
+      {% elsif settings.featured_collection_blog_2 != blank %}
+        <a href="{{ articles[settings.featured_collection_blog_2].url }}">
       {% endif %}
-      {% if settings.featured_collection_product_2 != blank %}
-        <img class="product" src="{{ all_products[settings.featured_collection_product_2].featured_image.src | img_url: '1400x' }}" />
-      {% endif %}
-      {% if settings.featured_collection_blog_2 != blank %}
-        <img src="{{ articles[settings.featured_collection_blog_2].image.src | img_url: '1400x' }}" />
+
+        {% if settings.featured_collection_image_2 != blank %}
+          <img class="image" src="{{ settings.featured_collection_image_2 | img_url: '1400x' }}" />
+        {% elsif settings.featured_collection_2 != blank %}
+          <img class="collection-image" src="{{ collections[settings.featured_collection_2].image.src | img_url: '1400x' }}" />
+        {% elsif settings.featured_collection_product_2 != blank %}
+          <img class="product-image" src="{{ all_products[settings.featured_collection_product_2].featured_image.src | img_url: '1400x' }}" />
+        {% elsif settings.featured_collection_blog_2 != blank %}
+          <img class="article-image" src="{{ collections[settings.collection_2].image.src | img_url: '1400x' }}" />
+        {% endif %}
+
+      {% if settings.featured_collection_2 != blank %}
+        </a>
+      {% elsif settings.featured_collection_product_2 != blank %}
+        </a>
+      {% elsif settings.featured_collection_blog_2 != blank %}
+        </a>
       {% endif %}
     </div>
     <div class="featured-collections--item-title">{{ settings.featured_collection_title_2 }}</div>
@@ -45,11 +75,9 @@
     <div class="featured-collections--item-link">
       {% if settings.featured_collection_2 != blank %}
         <a href="{{ collections[settings.featured_collection_2].url }}">{{ settings.featured_collection_link_2 }}</a>
-      {% endif %}
-      {% if settings.featured_collection_product_2 != blank %}
+      {% elsif settings.featured_collection_product_2 != blank %}
         <a href="{{ all_products[settings.featured_collection_product_2].url }}">{{ settings.featured_collection_link_2 }}</a>
-      {% endif %}
-      {% if settings.featured_collection_blog_2 != blank %}
+      {% elsif settings.featured_collection_blog_2 != blank %}
         <a href="{{ articles[settings.featured_collection_blog_2].url }}">{{ settings.featured_collection_link_2 }}</a>
       {% endif %}
     </div>

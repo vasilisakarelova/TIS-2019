@@ -134,13 +134,9 @@
                   </button>
                 {% endif %}
               </div>
-              {% if additional_checkout_buttons %}
-                {% if product.available %}
-                  <div class="additional-checkout-buttons additional-checkout-buttons--vertical">
-                    {{ content_for_additional_checkout_buttons }}
-                  </div>
-                {% endif %}
-              {% endif %}
+              {% comment %}
+              additional checkout buttons
+              {% endcomment %}
             {% if product.available %}
             </form>
 			      {% endif %}

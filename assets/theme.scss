@@ -4278,14 +4278,12 @@ button.mfp-arrow {
 
 .featured-collections--item {
   text-align: center;
-  font-size: $mobileSmallFont;
-  text-transform: uppercase;
+  font-size: $bigFont;
+  line-height: 24px;
   letter-spacing: 0.05em;
   padding-bottom: 30px;
 
   @include at-query($min, $large) {
-    font-size: $desktopSmallFont;
-    line-height: $desktopSmallLineHeight;
     letter-spacing: 0.03em;
     padding-bottom: 0px;
     text-align: left;
@@ -4293,7 +4291,7 @@ button.mfp-arrow {
 }
 
 .featured-collections--item-desc {
-  padding: 10px 0;
+  // padding: 10px 0;
 
   @include at-query($min, $large) {
     max-width: 70%;

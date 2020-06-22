@@ -1,16 +1,32 @@
-<!-- snippets/featured-collections.liquid -->
+<!-- snippets/featured-collections-2.liquid -->
 
 <div class="featured-collections" style="display: none">
   <div class="featured-collections--item">
     <div class="featured-collections--item-image">
       {% if settings.featured_collection_3 != blank %}
-        <img src="{{ collections[settings.featured_collection_3].image.src | img_url: '1400x' }}" />
+        <a href="{{ collections[settings.featured_collection_3].url }}">
+      {% elsif settings.featured_collection_product_3 != blank %}
+        <a href="{{ all_products[settings.featured_collection_product_3].url }}">
+      {% elsif settings.featured_collection_blog_3 != blank %}
+        <a href="{{ articles[settings.featured_collection_blog_3].url }}">
       {% endif %}
-      {% if settings.featured_collection_product_3 != blank %}
-        <img class="product" src="{{ all_products[settings.featured_collection_product_3].featured_image.src | img_url: '1400x' }}" />
-      {% endif %}
-      {% if settings.featured_collection_blog_3 != blank %}
-        <img src="{{ collections[settings.collection_3].image.src | img_url: '1400x' }}" />
+
+        {% if settings.featured_collection_image_3 != blank %}
+          <img class="image" src="{{ settings.featured_collection_image_3 | img_url: '1400x' }}" />
+        {% elsif settings.featured_collection_3 != blank %}
+          <img class="collection-image" src="{{ collections[settings.featured_collection_3].image.src | img_url: '1400x' }}" />
+        {% elsif settings.featured_collection_product_3 != blank %}
+          <img class="product-image" src="{{ all_products[settings.featured_collection_product_3].featured_image.src | img_url: '1400x' }}" />
+        {% elsif settings.featured_collection_blog_3 != blank %}
+          <img class="article-image" src="{{ collections[settings.collection_3].image.src | img_url: '1400x' }}" />
+        {% endif %}
+
+      {% if settings.featured_collection_3 != blank %}
+        </a>
+      {% elsif settings.featured_collection_product_3 != blank %}
+        </a>
+      {% elsif settings.featured_collection_blog_3 != blank %}
+        </a>
       {% endif %}
     </div>
     <div class="featured-collections--item-title">{{ settings.featured_collection_title_3 }}</div>
@@ -18,11 +34,9 @@
     <div class="featured-collections--item-link">
       {% if settings.featured_collection_3 != blank %}
         <a href="{{ collections[settings.featured_collection_3].url }}">{{ settings.featured_collection_link_3 }}</a>
-      {% endif %}
-      {% if settings.featured_collection_product_3 != blank %}
+      {% elsif settings.featured_collection_product_3 != blank %}
         <a href="{{ all_products[settings.featured_collection_product_3].url }}">{{ settings.featured_collection_link_3 }}</a>
-      {% endif %}
-      {% if settings.featured_collection_blog_3 != blank %}
+      {% elsif settings.featured_collection_blog_3 != blank %}
         <a href="{{ articles[settings.featured_collection_blog_3].url }}">{{ settings.featured_collection_link_3 }}</a>
       {% endif %}
     </div>
@@ -31,13 +45,29 @@
   <div class="featured-collections--item">
     <div class="featured-collections--item-image">
       {% if settings.featured_collection_4 != blank %}
-        <img src="{{ collections[settings.featured_collection_4].image.src | img_url: '1400x' }}" />
+        <a href="{{ collections[settings.featured_collection_4].url }}">
+      {% elsif settings.featured_collection_product_4 != blank %}
+        <a href="{{ all_products[settings.featured_collection_product_4].url }}">
+      {% elsif settings.featured_collection_blog_4 != blank %}
+        <a href="{{ articles[settings.featured_collection_blog_4].url }}">
       {% endif %}
-      {% if settings.featured_collection_product_4 != blank %}
-        <img class="product" src="{{ all_products[settings.featured_collection_product_4].featured_image.src | img_url: '1400x' }}" />
-      {% endif %}
-      {% if settings.featured_collection_blog_4 != blank %}
-        <img src="{{ articles[settings.featured_collection_blog_4].image.src | img_url: '1400x' }}" />
+
+        {% if settings.featured_collection_image_4 != blank %}
+          <img class="image" src="{{ settings.featured_collection_image_4 | img_url: '1400x' }}" />
+        {% elsif settings.featured_collection_4 != blank %}
+          <img class="collection-image" src="{{ collections[settings.featured_collection_4].image.src | img_url: '1400x' }}" />
+        {% elsif settings.featured_collection_product_4 != blank %}
+          <img class="product-image" src="{{ all_products[settings.featured_collection_product_4].featured_image.src | img_url: '1400x' }}" />
+        {% elsif settings.featured_collection_blog_4 != blank %}
+          <img class="article-image" src="{{ collections[settings.collection_4].image.src | img_url: '1400x' }}" />
+        {% endif %}
+
+      {% if settings.featured_collection_4 != blank %}
+        </a>
+      {% elsif settings.featured_collection_product_4 != blank %}
+        </a>
+      {% elsif settings.featured_collection_blog_4 != blank %}
+        </a>
       {% endif %}
     </div>
     <div class="featured-collections--item-title">{{ settings.featured_collection_title_4 }}</div>
@@ -45,11 +75,9 @@
     <div class="featured-collections--item-link">
       {% if settings.featured_collection_4 != blank %}
         <a href="{{ collections[settings.featured_collection_4].url }}">{{ settings.featured_collection_link_4 }}</a>
-      {% endif %}
-      {% if settings.featured_collection_product_4 != blank %}
+      {% elsif settings.featured_collection_product_4 != blank %}
         <a href="{{ all_products[settings.featured_collection_product_4].url }}">{{ settings.featured_collection_link_4 }}</a>
-      {% endif %}
-      {% if settings.featured_collection_blog_4 != blank %}
+      {% elsif settings.featured_collection_blog_4 != blank %}
         <a href="{{ articles[settings.featured_collection_blog_4].url }}">{{ settings.featured_collection_link_4 }}</a>
       {% endif %}
     </div>

@@ -160,9 +160,9 @@
                 {{ 'cart.general.checkout' | t }} <span class="icon icon-arrow-right" aria-hidden="true"></span>
               </button>
 
-              {% if additional_checkout_buttons %}
-                <div class="additional_checkout_buttons">{{ content_for_additional_checkout_buttons }}</div>
-              {% endif %}
+              {% comment %}
+                additional checkout buttons
+              {% endcomment %}
             </div>
           </div>
 
