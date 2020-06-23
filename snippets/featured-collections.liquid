@@ -12,13 +12,13 @@
       {% endif %}
 
         {% if settings.featured_collection_image_1 != blank %}
-          <img class="image" src="{{ settings.featured_collection_image_1 | img_url: '1400x' }}" />
+          <img class="lazyload blur-up image" data-src="{{ settings.featured_collection_image_1 | img_url: '1400x' }}" src="{{ settings.featured_collection_image_1 | img_url: '100x100' }}" />
         {% elsif settings.featured_collection_1 != blank %}
-          <img class="collection-image" src="{{ collections[settings.featured_collection_1].image.src | img_url: '1400x' }}" />
+          <img class="lazyload blur-up collection-image" data-src="{{ collections[settings.featured_collection_1].image.src | img_url: '1400x' }}" src="{{ collections[settings.featured_collection_1].image.src | img_url: '100x100' }}" />
         {% elsif settings.featured_collection_product_1 != blank %}
-          <img class="product-image" src="{{ all_products[settings.featured_collection_product_1].featured_image.src | img_url: '1400x' }}" />
+          <img class="lazyload blur-up product-image" data-src="{{ all_products[settings.featured_collection_product_1].featured_image.src | img_url: '1400x' }}" src="{{ all_products[settings.featured_collection_product_1].featured_image.src | img_url: '100x100' }}" />
         {% elsif settings.featured_collection_blog_1 != blank %}
-          <img class="article-image" src="{{ collections[settings.collection_1].image.src | img_url: '1400x' }}" />
+          <img class="lazyload blur-up article-image" data-src="{{ collections[settings.collection_1].image.src | img_url: '1400x' }}" src="{{ collections[settings.collection_1].image.src | img_url: '100x100' }}" />
         {% endif %}
 
       {% if settings.featured_collection_1 != blank %}
@@ -53,13 +53,13 @@
       {% endif %}
 
         {% if settings.featured_collection_image_2 != blank %}
-          <img class="image" src="{{ settings.featured_collection_image_2 | img_url: '1400x' }}" />
+          <img class="lazyload blur-up image" data-src="{{ settings.featured_collection_image_2 | img_url: '1400x' }}" src="{{ settings.featured_collection_image_2 | img_url: '100x100' }}" />
         {% elsif settings.featured_collection_2 != blank %}
-          <img class="collection-image" src="{{ collections[settings.featured_collection_2].image.src | img_url: '1400x' }}" />
+          <img class="lazyload blur-up collection-image" data-src="{{ collections[settings.featured_collection_2].image.src | img_url: '1400x' }}" src="{{ collections[settings.featured_collection_2].image.src | img_url: '100x100' }}" />
         {% elsif settings.featured_collection_product_2 != blank %}
-          <img class="product-image" src="{{ all_products[settings.featured_collection_product_2].featured_image.src | img_url: '1400x' }}" />
+          <img class="lazyload blur-up product-image" data-src="{{ all_products[settings.featured_collection_product_2].featured_image.src | img_url: '1400x' }}" src="{{ all_products[settings.featured_collection_product_2].featured_image.src | img_url: '100x100' }}" />
         {% elsif settings.featured_collection_blog_2 != blank %}
-          <img class="article-image" src="{{ collections[settings.collection_2].image.src | img_url: '1400x' }}" />
+          <img class="lazyload blur-up article-image" data-src="{{ collections[settings.collection_2].image.src | img_url: '1400x' }}" src="{{ collections[settings.collection_2].image.src | img_url: '100x100' }}" />
         {% endif %}
 
       {% if settings.featured_collection_2 != blank %}

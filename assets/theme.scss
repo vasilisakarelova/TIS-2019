@@ -1139,9 +1139,6 @@ input[type="image"] {
     }
 
   form {
-    margin: 0 auto;
-    max-width: 940px;
-
     .note, .errors {
       margin-bottom: 0;
     }
@@ -1180,86 +1177,6 @@ input[type="image"] {
       font-size: em(21px);
     }
   }
-}
-
-.newsletter--headline {
-  position: relative;
-  display: block;
-  font-size: $bigFont;
-  line-height: 50px;
-  letter-spacing: 0.05em;
-  text-align: center;
-  height: 50px;
-  padding-bottom: 5px;
-}
-
-.newsletter--input-group {
-  position: relative;
-  display: block;
-}
-
-.newsletter--info {
-  position: relative;
-  display: block;
-  text-align: center;
-  margin-top: 10px;
-  font-family: Helvetica;
-  font-style: normal;
-  font-weight: normal;
-  font-size: $mobileSmallFont;
-  text-transform: uppercase;
-  line-height: 13px;
-  letter-spacing: 0.05em;
-  color: rgb(0, 0, 0);
-
-  @include at-query($min, $large) {
-    font-size: $desktopSmallFont;
-    line-height: $desktopSmallLineHeight;
-    letter-spacing: 0.03em;
-  }
-}
-
-.newsletter--input-group input {
-  padding: 0;
-  margin: 0;
-  border: 2px solid #000;
-  background: #fff;
-  height: 50px;
-  line-height: 50px;
-  font-size: $bigFont;
-  border-radius: 3px;
-  width: 100%;
-  text-align: center;
-  margin-bottom: 5px;
-  letter-spacing: 0.05em;
-  outline: none;
-}
-
-.newsletter--input-group input:focus::placeholder {
-  color: transparent;
-}
-
-.newsletter--input-group input::placeholder {
-  color: #000;
-  opacity: 1 !important;
-}
-
-.newsletter--input-group-btn {
-  position: relative;
-  display: block;
-  width: 100%;
-}
-
-.newsletter--input-group-btn button {
-  background: #000;
-  border-radius: 3px;
-  height: 50px;
-  line-height: 47px;
-  font-size: $bigFont;
-  color: #fff;
-  width: 100%;
-  text-transform: lowercase;
-  letter-spacing: 0.05em;
 }
 
 @include at-query($max, $small) {
@@ -2785,8 +2702,6 @@ button.mfp-arrow {
   left: 0;
   width: 100%;
   display: block;
-  opacity: 0;
-  @include transition(opacity 0.4s ease-out);
 }
 
 .grid-product__image {
@@ -2796,8 +2711,6 @@ button.mfp-arrow {
   width: 100%;
   display: block;
   margin: 0 auto;
-  opacity: 0;
-  @include transition(opacity 0.4s ease-out);
 
   .is-sold-out & {
     opacity: 1;
@@ -4272,8 +4185,11 @@ button.mfp-arrow {
     display: grid;
     grid-template-columns: repeat(2, calc((100% - 10px) / 2));
     grid-column-gap: 10px;
-    padding-bottom: 30px;
   }
+}
+
+.featured-collections:not(.at-bottom) {
+  padding-bottom: 30px;
 }
 
 .featured-collections--item {
@@ -4288,6 +4204,10 @@ button.mfp-arrow {
     padding-bottom: 0px;
     text-align: left;
   }
+}
+
+.featured-collections--item:last-of-type {
+  padding-bottom: 0;
 }
 
 .featured-collections--item-desc {
@@ -4315,5 +4235,125 @@ button.mfp-arrow {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top;
+  object-position: center;
+}
+
+.blur-up {
+	-webkit-filter: blur(10px);
+	filter: blur(10px);
+	transition: filter 400ms, -webkit-filter 400ms;
+}
+
+.blur-up.lazyloaded {
+	-webkit-filter: blur(0);
+	filter: blur(0);
+}
+
+/* vasilisa, 23.06.2020 */
+
+.newsletter {
+  margin-top: 80px;
+  background: #CCE3FF;
+}
+
+.newsletter .wrapper {
+  padding: 5px;
+
+  @include at-query($min, $large) {
+    padding: 10px;
+  }
+}
+
+.newsletter--headline {
+  position: relative;
+  display: block;
+  font-size: $bigFont;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  text-align: left;
+  padding-bottom: 20px;
+}
+
+.newsletter--headline p {
+  margin: 0;
+}
+
+.newsletter--input-group {
+  position: relative;
+  display: flex;
+}
+
+.newsletter--input-group input {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: #CCE3FF;
+  height: 50px;
+  font-size: 48px;
+  line-height: 50px;
+  border-radius: 3px;
+  width: 100%;
+  text-align: left;
+  margin: 0px;
+  letter-spacing: 0.05em;
+  outline: none;
+}
+
+.newsletter--input-group input:focus::placeholder {
+  color: transparent;
+}
+
+.newsletter--input-group input::placeholder {
+  color: #000;
+  opacity: 1 !important;
+}
+
+.newsletter--input-group-btn {
+  position: relative;
+  display: block;
+}
+
+.newsletter--input-group-btn button {
+  background: #CCE3FF;
+  border-radius: 3px;
+  height: 50px;
+  line-height: 46px;
+  font-size: $bigFont;
+  color: #000;
+  width: 100%;
+  text-transform: lowercase;
+  letter-spacing: 0.03em;
+  border: 2px solid #000;
+  padding: 0 10px;
+  margin: 0;
+  white-space: nowrap;
+
+  @include at-query($min, $large) {
+    padding: 0 40px;
+  }
+}
+
+.newsletter--info {
+  position: relative;
+  display: block;
+  text-align: left;
+  margin-top: 30px;
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: normal;
+  font-size: $mobileSmallFont;
+  text-transform: uppercase;
+  line-height: 13px;
+  letter-spacing: 0.05em;
+  color: rgb(0, 0, 0);
+
+  @include at-query($min, $large) {
+    font-size: $desktopSmallFont;
+    line-height: $desktopSmallLineHeight;
+    letter-spacing: 0.03em;
+  }
+}
+
+.newsletter--info p {
+  margin: 0;
 }

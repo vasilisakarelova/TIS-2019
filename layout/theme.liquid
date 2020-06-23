@@ -89,6 +89,7 @@
   {{ 'modernizr.min.js' | asset_url | script_tag }}
   {{ 'modernizr.custom.js' | asset_url | script_tag }}
   {{ 'pauseresume.js' | asset_url | script_tag }}
+  {{ 'lazysizes.min.js' | asset_url | script_tag }}
 
   {% comment %}
     If you store has customer accounts disabled, you can remove the following JS file
@@ -197,27 +198,17 @@
       {% if settings.footer_newsletter_enable %}
         <div class="newsletter">
           <div class="wrapper">
-            {% comment %}
-
-              MailChimp is the go-to newsletter service for Shopify.
-              Use the link below to find your MailChimp "form action"
-              and insert it in your site settings.
-
-              MailChimp newsletter integration and requirement:
-               - http://docs.shopify.com/support/configuration/store-customization/where-do-i-get-my-mailchimp-form-action
-
-            {% endcomment %}
-            <div class='newsletter--headline'>sign up for email updates</div>
+            <div class='newsletter--headline'>{{ settings.newsletter_form_headline }}</div>
             {% if settings.newsletter_form_action != blank %}
               {% assign form_action = settings.newsletter_form_action %}
               <form action="{{ form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form">
                 <label for="Email" class="newsletter__label hidden-label">{{ 'general.newsletter_form.newsletter_email' | t }}</label>
                 <div class="newsletter--form">
                   <div class="newsletter--input-group">
-                    <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="email address" name="EMAIL" id="Email" class="input-group-field" autocorrect="off" autocapitalize="off">
+                    <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="Email" name="EMAIL" id="Email" class="input-group-field" autocorrect="off" autocapitalize="off">
                     <span class="newsletter--input-group-btn">
                       <button type="submit" class="newsletter__submit" name="subscribe" id="Subscribe">
-                        <span class="newsletter__submit-text">{{ 'general.newsletter_form.submit' | t }}</span>
+                        <span class="newsletter__submit-text">{{ settings.newsletter_form_button }}</span>
                       </button>
                     </span>
                   </div>
@@ -246,7 +237,7 @@
                 {% endif %}
               {% endform %}
             {% endif %}
-            <div class="newsletter--info">You may unsubscribe at any time.<br/>To find out more, please visit our <a href="/pages/datenschutz">Privacy Policy</a>.</div>
+            <div class="newsletter--info">{{ settings.newsletter_form_unsubscribe_text }}</div>
           </div>
         </div>
       {% endif %}

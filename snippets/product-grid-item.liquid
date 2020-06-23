@@ -32,7 +32,7 @@
   <div class="grid-product__wrapper">
     <div class="grid-product__image-wrapper">
       <a class="grid-product__image-link" href="{{ product.url | within: collection }}">
-        <img data-src="{{ product | img_url: '1024x1024' }}" alt="{{ product.featured_image.alt | escape }}" class="grid-product__image">
+        <img src="{{ product | img_url: '100x100' }}" data-src="{{ product | img_url: '1024x1024' }}" alt="{{ product.featured_image.alt | escape }}" class="lazyload blur-up grid-product__image">
       </a>
     </div>
 

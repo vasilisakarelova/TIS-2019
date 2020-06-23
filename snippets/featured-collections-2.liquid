@@ -1,6 +1,6 @@
 <!-- snippets/featured-collections-2.liquid -->
 
-<div class="featured-collections">
+<div class="featured-collections at-bottom">
   <div class="featured-collections--item">
     <div class="featured-collections--item-image">
       {% if settings.featured_collection_3 != blank %}
@@ -12,13 +12,13 @@
       {% endif %}
 
         {% if settings.featured_collection_image_3 != blank %}
-          <img class="image" src="{{ settings.featured_collection_image_3 | img_url: '1400x' }}" />
+          <img class="lazyload blur-up image" data-src="{{ settings.featured_collection_image_3 | img_url: '1400x' }}" src="{{ settings.featured_collection_image_3 | img_url: '100x100' }}" />
         {% elsif settings.featured_collection_3 != blank %}
-          <img class="collection-image" src="{{ collections[settings.featured_collection_3].image.src | img_url: '1400x' }}" />
+          <img class="lazyload blur-up collection-image" data-src="{{ collections[settings.featured_collection_3].image.src | img_url: '1400x' }}" src="{{ collections[settings.featured_collection_3].image.src | img_url: '100x100' }}" />
         {% elsif settings.featured_collection_product_3 != blank %}
-          <img class="product-image" src="{{ all_products[settings.featured_collection_product_3].featured_image.src | img_url: '1400x' }}" />
+          <img class="lazyload blur-up product-image" data-src="{{ all_products[settings.featured_collection_product_3].featured_image.src | img_url: '1400x' }}" src="{{ all_products[settings.featured_collection_product_3].featured_image.src | img_url: '100x100' }}" />
         {% elsif settings.featured_collection_blog_3 != blank %}
-          <img class="article-image" src="{{ collections[settings.collection_3].image.src | img_url: '1400x' }}" />
+          <img class="lazyload blur-up article-image" data-src="{{ collections[settings.collection_3].image.src | img_url: '1400x' }}" src="{{ collections[settings.collection_3].image.src | img_url: '100x100' }}" />
         {% endif %}
 
       {% if settings.featured_collection_3 != blank %}
@@ -53,13 +53,13 @@
       {% endif %}
 
         {% if settings.featured_collection_image_4 != blank %}
-          <img class="image" src="{{ settings.featured_collection_image_4 | img_url: '1400x' }}" />
+          <img class="lazyload blur-up image" data-src="{{ settings.featured_collection_image_4 | img_url: '1400x' }}" src="{{ settings.featured_collection_image_4 | img_url: '100x100' }}" />
         {% elsif settings.featured_collection_4 != blank %}
-          <img class="collection-image" src="{{ collections[settings.featured_collection_4].image.src | img_url: '1400x' }}" />
+          <img class="lazyload blur-up collection-image" data-src="{{ collections[settings.featured_collection_4].image.src | img_url: '1400x' }}" src="{{ collections[settings.featured_collection_4].image.src | img_url: '100x100' }}" />
         {% elsif settings.featured_collection_product_4 != blank %}
-          <img class="product-image" src="{{ all_products[settings.featured_collection_product_4].featured_image.src | img_url: '1400x' }}" />
+          <img class="lazyload blur-up product-image" data-src="{{ all_products[settings.featured_collection_product_4].featured_image.src | img_url: '1400x' }}" src="{{ all_products[settings.featured_collection_product_4].featured_image.src | img_url: '100x100' }}" />
         {% elsif settings.featured_collection_blog_4 != blank %}
-          <img class="article-image" src="{{ collections[settings.collection_4].image.src | img_url: '1400x' }}" />
+          <img class="lazyload blur-up article-image" data-src="{{ collections[settings.collection_4].image.src | img_url: '1400x' }}" src="{{ collections[settings.collection_4].image.src | img_url: '100x100' }}" />
         {% endif %}
 
       {% if settings.featured_collection_4 != blank %}

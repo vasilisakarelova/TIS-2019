@@ -1253,21 +1253,21 @@ theme.init = function () {
   theme.cache.$window.on('resize', theme.debounce(theme.resizeLogo, 150));
   theme.cache.$window.on('resize', theme.debounce(theme.initStickyProductMeta, 150));
 
-  var imgs = [].slice.call(document.querySelectorAll('.grid-product__image'))
-  imgs.forEach(function(image, i) {
-    image.addEventListener('load', function() {
-      image.style.opacity = 1
-    })
-    image.src = image.dataset.src
-  });
+  // var imgs = [].slice.call(document.querySelectorAll('.grid-product__image'))
+  // imgs.forEach(function(image, i) {
+  //   image.addEventListener('load', function() {
+  //     image.style.opacity = 1
+  //   })
+  //   image.src = image.dataset.src
+  // });
 
-  var productimgs = [].slice.call(document.querySelectorAll('.product-single__photo'))
-  productimgs.forEach(function(image, i) {
-    image.addEventListener('load', function() {
-      image.style.opacity = 1
-    })
-    image.src = image.dataset.src
-  })
+  // var productimgs = [].slice.call(document.querySelectorAll('.product-single__photo'))
+  // productimgs.forEach(function(image, i) {
+  //   image.addEventListener('load', function() {
+  //     image.style.opacity = 1
+  //   })
+  //   image.src = image.dataset.src
+  // })
 };
 
 theme.collectionBackButton = function () {
