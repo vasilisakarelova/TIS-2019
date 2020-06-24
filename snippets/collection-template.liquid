@@ -4,12 +4,12 @@
 
 {% paginate collection.products by 100 %}
 
-<div class="collection-info">
-  <div class="collection-info--title">{{ collection.title }}</div>
-  {% if collection.description != blank %}
+{% if collection.description != blank %}
+  <div class="collection-info">
+    <div class="collection-info--title">{{ collection.title }}</div>
     <div class="collection-info--desc">{{ collection.description }}</div>
-  {% endif %}
-</div>
+  </div>
+{% endif %}
 
 <div class="grid-products">
   {% assign grid_item_width = 'medium--one-half large--one-third' %}

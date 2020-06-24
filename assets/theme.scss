@@ -3370,71 +3370,6 @@ button.mfp-arrow {
   margin: 0;
 }
 
-.site-footer {
-  padding: 60px 0 0;
-  text-align: center;
-}
-
-.footer-instagram {
-  position: relative;
-  display: block;
-  background: $tislightblue;
-  text-transform: lowercase;
-  height: 50px;
-  border-radius: 3px;
-
-  @include at-query($min, $large) {
-    background: transparent;
-    // height: 70px;
-  }
-
-  a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 50px;
-    width: 100%;
-    height: 100%;
-    font-family: Helvetica;
-    font-style: normal;
-    font-weight: normal;
-    font-size: $bigFont;
-    line-height: 24px;
-    letter-spacing: 0.03em;
-    color: $tisblue;
-
-    @include at-query($min, $large) {
-      // font-size: 32px;
-      // line-height: 70px;
-      display: inline-flex;
-      width: auto;
-    }
-  }
-
-  a:hover,
-  a:active,
-  a:visited {
-    color: $tisblue;
-  }
-}
-
-.footer-instagram-icon {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-
-  @include at-query($min, $large) {
-    width: 23px;
-    height: 23px;
-  }
-
-  svg {
-    position: relative;
-    display: block;
-  }
-}
-
 .footer-menu {
   position: relative;
   display: flex;
@@ -3471,50 +3406,6 @@ button.mfp-arrow {
   @include at-query($min, $large) {
     padding-right: 20px;
   }
-
-  &:last-of-type {
-    padding-right: 0;
-  }
-}
-
-.footer-copyright {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 50px;
-  font-family: Helvetica;
-  font-style: normal;
-  font-weight: normal;
-  font-size: $mobileSmallFont;
-  text-transform: uppercase;
-  line-height: 13px;
-  letter-spacing: 0.05em;
-  color: #ABABAB;
-
-  @include at-query($min, $large) {
-    height: 70px;
-    font-size: $desktopSmallFont;
-    line-height: $desktopSmallLineHeight;
-    letter-spacing: 0.03em;
-  }
-
-  a,
-  a:hover,
-  a:active,
-  a:visited {
-    color: #ABABAB;
-  }
-}
-
-.footer-copyright--menu {
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-.footer-copyright--menu-item {
-  padding-right: 10px;
 
   &:last-of-type {
     padding-right: 0;
@@ -4206,6 +4097,10 @@ button.mfp-arrow {
   }
 }
 
+.featured-collections--item-title {
+  margin-top: 5px;
+}
+
 .featured-collections--item:last-of-type {
   padding-bottom: 0;
 }
@@ -4356,4 +4251,129 @@ button.mfp-arrow {
 
 .newsletter--info p {
   margin: 0;
+}
+
+.site-footer {
+  padding: 0px;
+  color: #000;
+}
+
+.site-footer .wrapper {
+  padding: 10px 5px 5px;
+  text-align: center;
+}
+
+.footer-instagram {
+  position: relative;
+  display: block;
+  text-transform: lowercase;
+  height: 30px;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 50px;
+    width: 100%;
+    height: 100%;
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: $bigFont;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+    text-decoration: underline;
+
+    @include at-query($min, $large) {
+      display: inline-flex;
+      width: auto;
+    }
+  }
+
+  a:hover,
+  a:active,
+  a:visited {
+    color: #000;
+  }
+}
+
+.footer-instagram-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+
+  @include at-query($min, $large) {
+    width: 23px;
+    height: 23px;
+  }
+
+  svg {
+    position: relative;
+    display: block;
+  }
+}
+
+.footer-copyright {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50px;
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: normal;
+  font-size: $mobileSmallFont;
+  text-transform: uppercase;
+  line-height: 13px;
+  letter-spacing: 0.05em;
+
+  @include at-query($min, $large) {
+    height: 70px;
+    font-size: $desktopSmallFont;
+    line-height: $desktopSmallLineHeight;
+    letter-spacing: 0.03em;
+  }
+
+  a,
+  a:hover,
+  a:active,
+  a:visited {
+    color: #000;
+  }
+}
+
+.footer-copyright--menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-copyright--menu-item {
+  padding-right: 10px;
+
+  &:last-of-type {
+    padding-right: 0;
+  }
+}
+
+/* vasilisa, 24.06.2020 */
+.grid-products__show-more-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: lowercase;
+  height: 50px;
+  margin: 15px 0 30px;
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: normal;
+  font-size: $bigFont;
+  text-decoration: underline;
+  letter-spacing: 0.03em;
+
+  @include at-query($min, $large) {
+    height: 70px;
+  }
 }
